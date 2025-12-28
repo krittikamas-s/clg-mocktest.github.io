@@ -66,7 +66,7 @@ const part4Questions = [
   {
     id: "p4_q7",
     type: "multiple-choice",
-    question: "Identify the resource ID in the following URL below:",
+    question: "Identify the resource ID in the following URL:",
     options: ["integrations", "652835eb123c6d2a15412cb4", "flowBuilder", "987835f12345040ecbfd0d76"],
     image: "images/p4_q7.png",
     correctAnswer: "987835f12345040ecbfd0d76",
@@ -177,11 +177,11 @@ const part4Questions = [
     type: "matching",
     question: "Match the AFE type with its description (Version 2).",
     rows: [
-      { id: 1, text: "XML parser helper", correct: "Comma separated values into JSON" },
-      { id: 2, text: "Handlebars editor", correct: "Allows you to create custom forms to use within the user interface" },
-      { id: 3, text: "SQL query builder", correct: "Allows you to visually define an expression to include or exclude records" },
+      { id: 1, text: "CSV parser helper", correct: "Comma separated values into JSON" },
+      { id: 2, text: "Form builder", correct: "Allows you to create custom forms to use within the user interface" },
+      { id: 3, text: "Filter editor", correct: "Allows you to visually define an expression to include or exclude records" },
       { id: 4, text: "JavaScript editor", correct: "Allows you to run JavaScript safely in a secure runtime environment" },
-      { id: 5, text: "Transform editor", correct: "Offers options to create an output record or row from an input record" }
+      { id: 5, text: "Transform 2.0 editor", correct: "Offers options to create an output record or row from an input record" }
     ],
     options: [
       "Comma separated values into JSON",
@@ -206,7 +206,7 @@ const part4Questions = [
     id: "p4_q19",
     type: "multiple-select",
     question: "Select all that apply: What types of JavaScript hooks are available in the Celigo platform?",
-    options: ["preSave page", "postResponseMap", "preMap", "postMap", "postSubmit", "postAggregate"],
+    options: ["preSavePage", "postResponseMap", "preMap", "postMap", "postSubmit", "postAggregate"],
     correctAnswer: ["preSave page", "postResponseMap", "preMap", "postMap", "postSubmit", "postAggregate"],
     explanation: "Celigo supports multiple JavaScript hooks including pre- and post-processing hooks.",
     chapter: ["Level 4 - Introducing Developer Tools|Hooks & Handlebars"]
@@ -270,9 +270,9 @@ const part4Questions = [
     rows: [
       { id: 1, text: "Data Variable", correct: "@" },
       { id: 2, text: "Block Helper", correct: "#" },
-      { id: 3, text: "Custom Helper", correct: "" }
+      { id: 3, text: "Custom Helper", correct: " " }
     ],
-    options: ["@", "#", ""],
+    options: ["@", "#", " "],
     explanation: "Handlebars uses symbols to denote different helper types: @ for data variables, # for block helpers.",
     chapter: ["Level 4 - Introducing Developer Tools|Hooks & Handlebars"]
   },
@@ -517,5 +517,3 @@ const part4Questions = [
 
 // Export or expose the array if needed elsewhere
 // module.exports = { part4Questions };
-
-
