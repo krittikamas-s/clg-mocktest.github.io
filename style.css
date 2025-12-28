@@ -253,7 +253,6 @@ button:disabled { opacity: 0.3; cursor: not-allowed; transform: none !important;
 #input-container {
     margin: 20px 0;
     width: 100%;
-    display: block !important; /* Ensures container is visible */
 }
 
 #short-answer-input {
@@ -293,4 +292,5 @@ button:disabled { opacity: 0.3; cursor: not-allowed; transform: none !important;
     color: #adb5bd;
     font-style: italic;
     font-size: 0.95rem;
+
 }
