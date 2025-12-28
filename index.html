@@ -13,8 +13,8 @@
     <div class="quiz-container">
         <div class="header">
             <div>
-            <h1>Celigo Mock Cert Exam</h1>
-            <p>v2.0.0</p>
+                <h1>Celigo Mock Cert Exam</h1>
+                <p>v2.0.0</p>
             </div>
             <div class="header-info">
                 <div id="progress-text">Question 1 / --</div>
@@ -380,39 +380,97 @@
                     shortAnswerInput.value = '';
                     submitAnswerBtn.classList.remove('hidden');
                 }
+            // } else if (q.type === 'matching') {
+            //     matchingContainer.classList.remove('hidden');
+            //     matchingContainer.innerHTML = '';
+            //     if (!isAnswered) submitAnswerBtn.classList.remove('hidden');
+            //     q.rows.forEach(row => {
+            //         const rowDiv = document.createElement('div');
+            //         rowDiv.className = 'matching-row';
+            //         const textSpan = document.createElement('span');
+            //         textSpan.className = 'matching-item-text';
+            //         textSpan.textContent = row.text;
+            //         const select = document.createElement('select');
+            //         select.className = 'matching-select';
+            //         select.dataset.rowId = row.id;
+            //         select.disabled = isAnswered;
+            //         const defOpt = document.createElement('option');
+            //         defOpt.textContent = "Select..."; defOpt.value = "";
+            //         select.appendChild(defOpt);
+            //         q.options.forEach(optVal => {
+            //             const opt = document.createElement('option');
+            //             opt.value = optVal; opt.textContent = optVal;
+            //             select.appendChild(opt);
+            //         });
+            //         if (isAnswered) {
+            //             const userVal = savedResult.userAnswer.find(u => u.id === row.id)?.value;
+            //             select.value = userVal;
+            //             rowDiv.classList.add(userVal === row.correct ? 'correct' : 'incorrect');
+            //         }
+            //         rowDiv.appendChild(textSpan);
+            //         rowDiv.appendChild(select);
+            //         matchingContainer.appendChild(rowDiv);
+            //     });
+            //     if (isAnswered) showFeedback(savedResult);
+            //  }
+            // --- UPDATED MATCHING TYPE LOGIC ---
             } else if (q.type === 'matching') {
-                matchingContainer.classList.remove('hidden');
-                matchingContainer.innerHTML = '';
-                if (!isAnswered) submitAnswerBtn.classList.remove('hidden');
-                q.rows.forEach(row => {
-                    const rowDiv = document.createElement('div');
-                    rowDiv.className = 'matching-row';
-                    const textSpan = document.createElement('span');
-                    textSpan.className = 'matching-item-text';
-                    textSpan.textContent = row.text;
-                    const select = document.createElement('select');
-                    select.className = 'matching-select';
-                    select.dataset.rowId = row.id;
-                    select.disabled = isAnswered;
-                    const defOpt = document.createElement('option');
-                    defOpt.textContent = "Select..."; defOpt.value = "";
-                    select.appendChild(defOpt);
-                    q.options.forEach(optVal => {
-                        const opt = document.createElement('option');
-                        opt.value = optVal; opt.textContent = optVal;
-                        select.appendChild(opt);
+                    matchingContainer.classList.remove('hidden');
+                    matchingContainer.innerHTML = '';
+                    if (!isAnswered) submitAnswerBtn.classList.remove('hidden');
+
+                    q.rows.forEach(row => {
+                        const rowDiv = document.createElement('div');
+                        rowDiv.className = 'matching-row';
+
+                        const textSpan = document.createElement('span');
+                        textSpan.className = 'matching-item-text';
+                        textSpan.textContent = row.text;
+
+                        if (isAnswered) {
+                            // After submission, show full text instead of a dropdown
+                            const userVal = savedResult.userAnswer.find(u => u.id === row.id)?.value;
+                            const isRowCorrect = userVal === row.correct;
+                            rowDiv.classList.add(isRowCorrect ? 'correct' : 'incorrect');
+
+                            const resultDisplay = document.createElement('div');
+                            resultDisplay.className = 'matching-result-display';
+
+                            if (isRowCorrect) {
+                                resultDisplay.innerHTML = `<span class="res-val">✓ ${userVal}</span>`;
+                            } else {
+                                resultDisplay.innerHTML = `
+                    <div class="res-wrong">✗ ${userVal || "No selection"}</div>
+                    <div class="res-correct">Correct: ${row.correct}</div>
+                `;
+                            }
+
+                            rowDiv.appendChild(textSpan);
+                            rowDiv.appendChild(resultDisplay);
+                        } else {
+                            // Before submission, show the standard dropdown
+                            const select = document.createElement('select');
+                            select.className = 'matching-select';
+                            select.dataset.rowId = row.id;
+
+                            const defOpt = document.createElement('option');
+                            defOpt.textContent = "Select..."; defOpt.value = "";
+                            select.appendChild(defOpt);
+
+                            q.options.forEach(optVal => {
+                                const opt = document.createElement('option');
+                                opt.value = optVal; opt.textContent = optVal;
+                                select.appendChild(opt);
+                            });
+
+                            rowDiv.appendChild(textSpan);
+                            rowDiv.appendChild(select);
+                        }
+                        matchingContainer.appendChild(rowDiv);
                     });
-                    if (isAnswered) {
-                        const userVal = savedResult.userAnswer.find(u => u.id === row.id)?.value;
-                        select.value = userVal;
-                        rowDiv.classList.add(userVal === row.correct ? 'correct' : 'incorrect');
-                    }
-                    rowDiv.appendChild(textSpan);
-                    rowDiv.appendChild(select);
-                    matchingContainer.appendChild(rowDiv);
-                });
-                if (isAnswered) showFeedback(savedResult);
-            } else if (q.type === 'multiple-select') {
+                    if (isAnswered) showFeedback(savedResult);
+                }
+            else if (q.type === 'multiple-select') {
                 optionsContainer.classList.remove('hidden');
                 optionsContainer.innerHTML = '';
                 if (!isAnswered) submitAnswerBtn.classList.remove('hidden');
