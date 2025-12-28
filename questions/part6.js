@@ -6,7 +6,7 @@ const part6Questions = [
         question: "What is a 'folder' that holds one or more flows called in Celigo?",
         options: ["Connection", "Integration", "Endpoint", "Lookup"],
         correctAnswer: "Integration",
-        explanation: "An Integration acts as a container or folder for related flows. / Integration ทำหน้าที่เป็นโฟลเดอร์รวบรวมโฟลว์ที่เกี่ยวข้องกันไว้ด้วยกัน",
+        explanation: "An Integration acts as a container or folder for related flows.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Celigo Platform User Interface"]
     },
     {
@@ -15,7 +15,7 @@ const part6Questions = [
         question: "How many days are deleted resources kept in the Recycle Bin before permanent deletion? (Answer with a number)",
         options: [],
         correctAnswer: "30",
-        explanation: "Resources are kept for 30 days. / ทรัพยากรที่ถูกลบจะถูกเก็บไว้ 30 วัน",
+        explanation: "Resources are kept for 30 days.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
     },
     {
@@ -24,7 +24,7 @@ const part6Questions = [
         question: "Is a Connection considered a standalone object that can be used in multiple flows?",
         options: ["Yes", "No"],
         correctAnswer: "Yes",
-        explanation: "Connections are standalone and reusable across different flows. / Connection เป็นวัตถุอิสระที่ใช้ซ้ำได้ในหลายโฟลว์",
+        explanation: "Connections are standalone and reusable across different flows.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Flow Components"]
     },
     {
@@ -33,7 +33,7 @@ const part6Questions = [
         question: "Which endpoint is responsible for providing or sending data into a flow?",
         options: ["Destination", "Source", "Import", "Mapping"],
         correctAnswer: "Source",
-        explanation: "The Source is where data originates. / Source คือต้นทางที่ให้ข้อมูล",
+        explanation: "The Source is where data originates.",
         chapter: ["Level 2 - Exploring Flow Builder|Source"]
     },
     {
@@ -42,7 +42,7 @@ const part6Questions = [
         question: "If a standalone connection is edited, what happens to all flows using that connection?",
         options: ["Nothing changes", "All flows reflect the change", "Flows are disabled", "A duplicate is created"],
         correctAnswer: "All flows reflect the change",
-        explanation: "Since it is a shared resource, updates apply globally. / เนื่องเป็นทรัพยากรที่ใช้ร่วมกัน การแก้ไขจะมีผลกับทุกที่",
+        explanation: "Since it is a shared resource, updates apply globally.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Flow Components"]
     },
     {
@@ -51,7 +51,7 @@ const part6Questions = [
         question: "Which menu lists standalone objects like Connections, Imports, and Exports?",
         options: ["Tools", "Resources", "Dashboard", "Marketplace"],
         correctAnswer: "Resources",
-        explanation: "The Resources menu manages independent components. / เมนู Resources ใช้จัดการส่วนประกอบอิสระ",
+        explanation: "The Resources menu manages independent components.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
     },
     {
@@ -60,7 +60,7 @@ const part6Questions = [
         question: "A red dot on an integration tile signifies what?",
         options: ["Success", "Errors", "Active Flow", "Maintenance"],
         correctAnswer: "Errors",
-        explanation: "The red dot indicates the presence of errors within the last 30 days. / จุดสีแดงบอกว่ามีข้อผิดพลาดเกิดขึ้นใน 30 วันล่าสุด",
+        explanation: "The red dot indicates the presence of errors within the last 30 days.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Celigo Platform User Interface"]
     },
     {
@@ -69,7 +69,7 @@ const part6Questions = [
         question: "Which Dashboard view shows columns like 'last run' and 'open errors'?",
         options: ["Running flows tab", "Completed flows tab", "Tile view", "List view"],
         correctAnswer: "Completed flows tab",
-        explanation: "This tab provides a history of flow executions. / แท็บนี้แสดงประวัติการรันโฟลว์ที่ผ่านมา",
+        explanation: "This tab provides a history of flow executions.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Celigo Platform User Interface"]
     },
     {
@@ -78,7 +78,7 @@ const part6Questions = [
         question: "How does a Lookup differ from an Export?",
         options: ["It uses no connection", "It doesn't start a flow by itself", "It is only for databases", "It is always manual"],
         correctAnswer: "It doesn't start a flow by itself",
-        explanation: "Lookups supplement existing records rather than initiating a flow. / Lookup ช่วยเสริมข้อมูลที่มีอยู่แล้ว ไม่ได้เป็นตัวเริ่มโฟลว์",
+        explanation: "Lookups supplement existing records rather than initiating a flow.",
         chapter: ["Level 2 - Exploring Flow Builder|Destination & Lookup"]
     },
     {
@@ -87,7 +87,7 @@ const part6Questions = [
         question: "Where is the Recycle Bin located?",
         options: ["Tools Menu", "Resources Menu", "Marketplace", "Admin Settings"],
         correctAnswer: "Resources Menu",
-        explanation: "It is found at the bottom of the Resources menu. / อยู่ส่วนล่างของเมนู Resources",
+        explanation: "It is found at the bottom of the Resources menu.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
     },
 
@@ -99,7 +99,7 @@ const part6Questions = [
         question: "What does API stand for?",
         options: ["Application Protocol Interface", "Application Programming Interface", "Automated Program Integration", "Advanced Programming Interaction"],
         correctAnswer: "Application Programming Interface",
-        explanation: "API is the standard interface for software communication. / API คือส่วนต่อประสานการเขียนโปรแกรมประยุกต์",
+        explanation: "API is the standard interface for software communication.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|APIs"]
     },
     {
@@ -108,7 +108,7 @@ const part6Questions = [
         question: "Using the elevator analogy, which part is the API?",
         options: ["The elevator car", "The floor", "The elevator buttons", "The motor"],
         correctAnswer: "The elevator buttons",
-        explanation: "Buttons are the interface users interact with to send commands. / ปุ่มกดคืออินเทอร์เฟซที่ใช้ส่งคำสั่งให้ระบบทำงาน",
+        explanation: "Buttons are the interface users interact with to send commands.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|APIs"]
     },
     {
@@ -117,7 +117,7 @@ const part6Questions = [
         question: "Which API method is used to retrieve data from a server?",
         options: ["POST", "PUT", "GET", "DELETE"],
         correctAnswer: "GET",
-        explanation: "GET is used for fetching information. / GET ใช้สำหรับดึงข้อมูล",
+        explanation: "GET is used for fetching information.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|APIs"]
     },
     {
@@ -126,7 +126,7 @@ const part6Questions = [
         question: "What is the key difference between PUT and PATCH methods?",
         options: ["PUT deletes, PATCH creates", "PUT updates whole records, PATCH modifies parts", "PATCH is faster", "There is no difference"],
         correctAnswer: "PUT updates whole records, PATCH modifies parts",
-        explanation: "PUT replaces the entire entity; PATCH applies partial updates. / PUT อัปเดตข้อมูลทั้งหมด; PATCH แก้ไขเฉพาะบางส่วน",
+        explanation: "PUT replaces the entire entity; PATCH applies partial updates.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|APIs"]
     },
     {
@@ -135,7 +135,7 @@ const part6Questions = [
         question: "Which component acts as the entry point to a server for an API request?",
         options: ["Client", "API Gateway", "Browser", "Database"],
         correctAnswer: "API Gateway",
-        explanation: "Gateways manage and route API requests. / Gateway ทำหน้าที่จัดการและส่งต่อคำขอ API",
+        explanation: "Gateways manage and route API requests.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|APIs"]
     },
     {
@@ -144,7 +144,7 @@ const part6Questions = [
         question: "Which term describes the rules and standards on how data requests are formatted?",
         options: ["Codes", "Gateways", "Protocols", "Methods"],
         correctAnswer: "Protocols",
-        explanation: "Protocols (like HTTP) define how communication is structured. / โปรโตคอลกำหนดโครงสร้างการสื่อสาร",
+        explanation: "Protocols (like HTTP) define how communication is structured.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|APIs"]
     },
     {
@@ -153,7 +153,7 @@ const part6Questions = [
         question: "Does the application developer (not Celigo) determine which API will work with their application?",
         options: ["Yes", "No"],
         correctAnswer: "Yes",
-        explanation: "API endpoints are built and defined by the application creators. / ผู้พัฒนาแอปเป็นคนสร้างและกำหนด API ของตนเอง",
+        explanation: "API endpoints are built and defined by the application creators.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|APIs"]
     },
     {
@@ -162,7 +162,7 @@ const part6Questions = [
         question: "Which method is used to create a brand-new resource or record on a server?",
         options: ["GET", "POST", "PATCH", "HEAD"],
         correctAnswer: "POST",
-        explanation: "POST is used to submit data to create a resource. / POST ใช้เพื่อสร้างข้อมูลใหม่",
+        explanation: "POST is used to submit data to create a resource.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|APIs"]
     },
     {
@@ -171,7 +171,7 @@ const part6Questions = [
         question: "Request formatting rules are determined by which of the following?",
         options: ["The user", "The API", "Operating System", "Hardware"],
         correctAnswer: "The API",
-        explanation: "The API specification dictates the required format. / ข้อกำหนดของ API เป็นตัวกำหนดรูปแบบข้อมูลที่ต้องส่ง",
+        explanation: "The API specification dictates the required format.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|APIs"]
     },
     {
@@ -180,7 +180,7 @@ const part6Questions = [
         question: "Where can a user typically find detailed API documentation for an application?",
         options: ["Celigo Home", "Developer's Website", "Recycle Bin", "Dashboard"],
         correctAnswer: "Developer's Website",
-        explanation: "Official documentation is hosted by the app provider. / เอกสารอ้างอิงทางการอยู่ที่เว็บไซต์ของผู้พัฒนาแอป",
+        explanation: "Official documentation is hosted by the app provider.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|APIs"]
     },
 
@@ -191,7 +191,7 @@ const part6Questions = [
         question: "What is the standard 4-step process in Flow Builder?",
         options: ["Source, Map, Test, Live", "Source, Destination, Map, Run", "Connect, Export, Import, Audit", "Install, Configure, Run, Report"],
         correctAnswer: "Source, Destination, Map, Run",
-        explanation: "The standard flow lifecycle in Celigo. / ขั้นตอนมาตรฐานในการสร้างโฟลว์บน Celigo",
+        explanation: "The standard flow lifecycle in Celigo.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Basic Flow Builder"]
     },
     {
@@ -200,7 +200,7 @@ const part6Questions = [
         question: "Which tool provides a visual interface for field matching between source and destination?",
         options: ["API Builder", "Mapper 2.0", "Data Loader", "Dashboard"],
         correctAnswer: "Mapper 2.0",
-        explanation: "Mapper 2.0 is the visual mapping interface. / Mapper 2.0 คือหน้าจอสำหรับจับคู่ฟิลด์ข้อมูล",
+        explanation: "Mapper 2.0 is the visual mapping interface.",
         chapter: ["Level 2 - Exploring Flow Builder|Mapping & Field Mapping"]
     },
     {
@@ -209,7 +209,7 @@ const part6Questions = [
         question: "What must every mapping row contain to function?",
         options: ["Description", "Destination field", "Comment", "Red flag"],
         correctAnswer: "Destination field",
-        explanation: "Celigo must know where the data is going. / ต้องระบุฟิลด์ปลายทางเพื่อให้ระบบรู้ว่าจะส่งข้อมูลไปที่ไหน",
+        explanation: "Celigo must know where the data is going.",
         chapter: ["Level 2 - Exploring Flow Builder|Mapping & Field Mapping"]
     },
     {
@@ -218,7 +218,7 @@ const part6Questions = [
         question: "Which mapping type uses double quotes for literal text values?",
         options: ["Standard", "Hard-Coded", "Handlebars", "Lookup"],
         correctAnswer: "Hard-Coded",
-        explanation: "Hard-coded values are fixed strings. / ค่าตายตัว (Hard-coded) จะถูกระบุในเครื่องหมายคำพูด",
+        explanation: "Hard-coded values are fixed strings.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Mapping Types"]
     },
     {
@@ -227,7 +227,7 @@ const part6Questions = [
         question: "What does the circled 'H' icon represent in Mapper 2.0?",
         options: ["Handlebars", "Hard-coded", "Hidden", "High-priority"],
         correctAnswer: "Hard-coded",
-        explanation: "The icon indicates a fixed value is set. / ไอคอน H วงกลมหมายถึงการระบุค่าตายตัว",
+        explanation: "The icon indicates a fixed value is set.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Mapping Types"]
     },
     {
@@ -236,7 +236,7 @@ const part6Questions = [
         question: "Which mapping feature allows combining multiple source fields (e.g., first and last name)?",
         options: ["Standard Mapping", "Handlebars Expression", "Static Lookup", "Manual Entry"],
         correctAnswer: "Handlebars Expression",
-        explanation: "Handlebars can concatenate strings like {{first}} {{last}}. / Handlebars สามารถนำฟิลด์มาผสมกันได้",
+        explanation: "Handlebars can concatenate strings like {{first}} {{last}}.",
         chapter: ["Level 4 - Introducing Developer Tools|Hooks & Handlebars"]
     },
     {
@@ -245,7 +245,7 @@ const part6Questions = [
         question: "Handlebars expressions are placed within which symbols?",
         options: ["( )", "[ ]", "{{ }}", "< >"],
         correctAnswer: "{{ }}",
-        explanation: "The double curly brace syntax is standard for Handlebars. / Handlebars ใช้เครื่องหมายปีกกาคู่เป็นสัญลักษณ์",
+        explanation: "The double curly brace syntax is standard for Handlebars.",
         chapter: ["Level 4 - Introducing Developer Tools|Hooks & Handlebars"]
     },
     {
@@ -254,7 +254,7 @@ const part6Questions = [
         question: "Are new flows disabled by default upon creation?",
         options: ["Yes", "No"],
         correctAnswer: "Yes",
-        explanation: "Most flows start as disabled to prevent accidental runs. / โฟลว์ใหม่จะถูกปิดไว้ก่อนเพื่อความปลอดภัย",
+        explanation: "Most flows start as disabled to prevent accidental runs.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Basic Flow Builder"]
     },
     {
@@ -263,7 +263,7 @@ const part6Questions = [
         question: "Which feature verifies flow logic and data accuracy before going live?",
         options: ["Audit Log", "Test Mode", "Playground", "Recycle Bin"],
         correctAnswer: "Test Mode",
-        explanation: "Test Mode runs the flow to check for errors. / Test Mode ใช้ตรวจสอบความถูกต้องก่อนเริ่มงานจริง",
+        explanation: "Test Mode runs the flow to check for errors.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Basic Flow Builder"]
     },
     {
@@ -272,7 +272,7 @@ const part6Questions = [
         question: "Which icon deletes a specific row in Mapper 2.0?",
         options: ["Gear", "Trash can", "Plus", "Checkmark"],
         correctAnswer: "Trash can",
-        explanation: "The trash can icon removes the mapping row. / ไอคอนถังขยะใช้สำหรับลบแถวการ Mapping",
+        explanation: "The trash can icon removes the mapping row.",
         chapter: ["Level 2 - Exploring Flow Builder|Mapping & Field Mapping"]
     },
 
@@ -283,7 +283,7 @@ const part6Questions = [
         question: "How do Marketplace Templates differ from Integration Apps (IAs)?",
         options: ["Price", "Templates are modifiable; IAs are locked/managed", "IAs only for DBs", "Templates need no connections"],
         correctAnswer: "Templates are modifiable; IAs are locked/managed",
-        explanation: "IAs are fully managed by developers and receive updates. / IA ถูกล็อกไว้และจัดการโดยผู้พัฒนา ส่วน Template แก้ไขได้",
+        explanation: "IAs are fully managed by developers and receive updates.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Marketplace"]
     },
     {
@@ -292,7 +292,7 @@ const part6Questions = [
         question: "Which role has the highest level and can transfer account ownership?",
         options: ["Admin", "User", "Account Owner", "Monitor"],
         correctAnswer: "Account Owner",
-        explanation: "The Account Owner holds the highest permissions. / เจ้าของบัญชีมีสิทธิ์สูงสุดและโอนสิทธิ์ได้",
+        explanation: "The Account Owner holds the highest permissions.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     },
     {
@@ -301,7 +301,7 @@ const part6Questions = [
         question: "What is the default data retention period for run history?",
         options: ["7 days", "30 days", "90 days", "Forever"],
         correctAnswer: "30 days",
-        explanation: "Celigo stores run data for 30 days. / ข้อมูลประวัติการรันจะถูกเก็บไว้ 30 วัน",
+        explanation: "Celigo stores run data for 30 days.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     },
     {
@@ -310,7 +310,7 @@ const part6Questions = [
         question: "Which feature allows setting up Sandbox or Production environments?",
         options: ["Multiple Environments", "Flow Builder", "Data Loader", "Marketplace"],
         correctAnswer: "Multiple Environments",
-        explanation: "Used to segregate dev/test from production data. / ใช้แยกสภาพแวดล้อมสำหรับการทดสอบและใช้งานจริง",
+        explanation: "Used to segregate dev/test from production data.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     },
     {
@@ -319,7 +319,7 @@ const part6Questions = [
         question: "Which log table tracks user login and resource creation activities?",
         options: ["Error Log", "Audit Log", "Activity Log", "System Log"],
         correctAnswer: "Audit Log",
-        explanation: "Audit logs track user actions across the platform. / Audit Log บันทึกกิจกรรมของผู้ใช้ทุกคนบนแพลตฟอร์ม",
+        explanation: "Audit logs track user actions across the platform.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     },
     {
@@ -328,7 +328,7 @@ const part6Questions = [
         question: "Can both SSO and MFA be enabled simultaneously for the same account?",
         options: ["Yes", "No"],
         correctAnswer: "No",
-        explanation: "You must choose one or handle MFA through your SSO provider. / ต้องเลือกอย่างใดอย่างหนึ่ง หรือจัดการ MFA ผ่าน SSO",
+        explanation: "You must choose one or handle MFA through your SSO provider.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     },
     {
@@ -337,7 +337,7 @@ const part6Questions = [
         question: "Which setting forces 2-step credentials for login security?",
         options: ["Enable user", "Require MFA", "Reset password", "Admin access"],
         correctAnswer: "Require MFA",
-        explanation: "MFA adds an extra layer of security. / การบังคับ MFA ช่วยเพิ่มความปลอดภัยในการเข้าสู่ระบบ",
+        explanation: "MFA adds an extra layer of security.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     },
     {
@@ -346,7 +346,7 @@ const part6Questions = [
         question: "Where can you see your account's current flow and endpoint usage limits?",
         options: ["Dashboard", "Subscription tab", "Marketplace", "Tools"],
         correctAnswer: "Subscription tab",
-        explanation: "Usage against entitlements is shown here. / ดูขีดจำกัดการใช้งานได้ที่แท็บ Subscription",
+        explanation: "Usage against entitlements is shown here.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     },
     {
@@ -355,7 +355,7 @@ const part6Questions = [
         question: "What page do non-owner users see instead of the full 'My account' settings?",
         options: ["Home", "My profile", "Security", "Playground"],
         correctAnswer: "My profile",
-        explanation: "Regular users access personal settings via 'My profile'. / ผู้ใช้ทั่วไปจะเห็นเมนู My profile แทน My account",
+        explanation: "Regular users access personal settings via 'My profile'.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     },
     {
@@ -364,7 +364,7 @@ const part6Questions = [
         question: "Which environment protects production data while testing new flows?",
         options: ["Production", "Non-production (Sandbox)", "Marketplace", "Data Loader"],
         correctAnswer: "Non-production (Sandbox)",
-        explanation: "Sandbox environments are for safe testing. / Sandbox ใช้สำหรับการทดสอบที่ปลอดภัยจากข้อมูลจริง",
+        explanation: "Sandbox environments are for safe testing.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     },
 
@@ -376,7 +376,7 @@ const part6Questions = [
         question: "Which tool allows you to test code snippets without affecting live integration data?",
         options: ["Flow Builder", "Data Loader", "Playground", "API Builder"],
         correctAnswer: "Playground",
-        explanation: "The Playground is a dedicated testing area with Advanced Field Editors (AFEs). / Playground เป็นพื้นที่ทดสอบโดยไม่กระทบต่อข้อมูลจริง",
+        explanation: "The Playground is a dedicated testing area with Advanced Field Editors (AFEs).",
         chapter: ["Level 4 - Introducing Developer Tools|Playground"]
     },
     {
@@ -385,7 +385,7 @@ const part6Questions = [
         question: "In addition to CSV and JSON, which other file types can Data Loader import? (Select 2)",
         options: ["PDF", "XLSX", "XML", "DOCX"],
         correctAnswer: ["XLSX", "XML"],
-        explanation: "Data Loader supports CSV, JSON, XLSX, and XML. / Data Loader รองรับไฟล์ CSV, JSON, XLSX และ XML",
+        explanation: "Data Loader supports CSV, JSON, XLSX, and XML.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
     },
     {
@@ -394,7 +394,7 @@ const part6Questions = [
         question: "How long is a generated report available for download in the Reports menu?",
         options: ["7 days", "15 days", "30 days", "60 days"],
         correctAnswer: "30 days",
-        explanation: "Reports can be downloaded for activities within the last 30 days. / รายงานสามารถดาวน์โหลดได้สำหรับเหตุการณ์ใน 30 วันล่าสุด",
+        explanation: "Reports can be downloaded for activities within the last 30 days.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
     },
     {
@@ -403,7 +403,7 @@ const part6Questions = [
         question: "Is information entered into the Playground automatically saved to your integration?",
         options: ["Yes", "No"],
         correctAnswer: "No",
-        explanation: "Playground data is not saved; you must copy/paste it. / ข้อมูลใน Playground จะไม่ถูกบันทึก คุณต้องคัดลอกไปวางเอง",
+        explanation: "Playground data is not saved; you must copy/paste it.",
         chapter: ["Level 4 - Introducing Developer Tools|Playground"]
     },
     {
@@ -412,7 +412,7 @@ const part6Questions = [
         question: "Where would you find and restore a deleted Export component?",
         options: ["Tools > Reports", "Resources > Recycle bin", "Marketplace", "Dashboard"],
         correctAnswer: "Resources > Recycle bin",
-        explanation: "Deleted objects are kept in the Recycle bin for 30 days. / ทรัพยากรที่ถูกลบกู้คืนได้ที่ Recycle bin ภายใน 30 วัน",
+        explanation: "Deleted objects are kept in the Recycle bin for 30 days.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
     },
     {
@@ -421,7 +421,7 @@ const part6Questions = [
         question: "Which menu is usually restricted to Account Owners and Admins because it contains standalone objects?",
         options: ["Tools", "Resources", "Marketplace", "Dashboard"],
         correctAnswer: "Resources",
-        explanation: "Resources contains shared objects managed by Admins. / เมนู Resources เก็บวัตถุใช้ร่วมกัน จัดการโดย Admin",
+        explanation: "Resources contains shared objects managed by Admins.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
     },
     {
@@ -430,7 +430,7 @@ const part6Questions = [
         question: "What is the 'API Builder' primarily used for?",
         options: ["To monitor API traffic", "To visually create your own APIs", "To delete connections", "To import CSVs"],
         correctAnswer: "To visually create your own APIs",
-        explanation: "API Builder is a visual tool to create custom APIs. / API Builder เป็นเครื่องมือสร้าง API ของคุณเอง",
+        explanation: "API Builder is a visual tool to create custom APIs.",
         chapter: ["Level 4 - Introducing Developer Tools|JavaScript APIs (My APIs)"]
     },
     {
@@ -439,7 +439,7 @@ const part6Questions = [
         question: "Which resource connects to applications located behind a firewall?",
         options: ["Scripts", "iClients", "Agents", "EDI profiles"],
         correctAnswer: "Agents",
-        explanation: "Agents establish secure connections to on-premise data. / Agents ใช้เชื่อมต่อข้อมูลภายใน Firewall (On-premise)",
+        explanation: "Agents establish secure connections to on-premise data.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
     },
     {
@@ -448,7 +448,7 @@ const part6Questions = [
         question: "How many days are deleted resources kept in the Recycle Bin? (Answer with a number)",
         options: [],
         correctAnswer: "30",
-        explanation: "Standard 30-day retention for deleted objects. / ระยะเวลากู้คืนข้อมูลคือ 30 วัน",
+        explanation: "Standard 30-day retention for deleted objects.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
     },
     {
@@ -457,7 +457,7 @@ const part6Questions = [
         question: "Which tool allows manual XLSX upload to a destination without building a scheduled flow?",
         options: ["API Builder", "Data Loader", "Playground", "Audit Log"],
         correctAnswer: "Data Loader",
-        explanation: "Data Loader is for manual file imports. / Data Loader ใช้สำหรับการนำเข้าไฟล์ด้วยตนเอง",
+        explanation: "Data Loader is for manual file imports.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
     },
 
@@ -468,7 +468,7 @@ const part6Questions = [
         question: "What refers to the data moving from a source to a destination?",
         options: ["Record", "Flow", "Integration", "Mapping"],
         correctAnswer: "Flow",
-        explanation: "A flow is the movement of data. / โฟลว์คือการเคลื่อนที่ของข้อมูล",
+        explanation: "A flow is the movement of data.",
         chapter: ["Level 2 - Exploring Flow Builder|Data Flow"]
     },
     {
@@ -477,7 +477,7 @@ const part6Questions = [
         question: "Which component adds supplementary info to a record?",
         options: ["Source", "Lookup", "Export", "Mapping"],
         correctAnswer: "Lookup",
-        explanation: "Lookups add info to an existing record. / Lookup ใช้เพิ่มข้อมูลเสริมให้เรคคอร์ดเดิม",
+        explanation: "Lookups add info to an existing record.",
         chapter: ["Level 2 - Exploring Flow Builder|Destination & Lookup"]
     },
     {
@@ -486,7 +486,7 @@ const part6Questions = [
         question: "Where can you see a list of every action taken in a flow?",
         options: ["Recycle Bin", "Audit Log", "Playground", "Marketplace"],
         correctAnswer: "Audit Log",
-        explanation: "Audit logs track every change. / Audit Log บันทึกทุกการเปลี่ยนแปลง",
+        explanation: "Audit logs track every change.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     },
     {
@@ -495,7 +495,7 @@ const part6Questions = [
         question: "Can you restore a deleted integration from the Recycle Bin?",
         options: ["Yes", "No"],
         correctAnswer: "Yes",
-        explanation: "Integrations are restorable within 30 days. / Integration สามารถกู้คืนได้ภายใน 30 วัน",
+        explanation: "Integrations are restorable within 30 days.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
     },
     {
@@ -504,7 +504,7 @@ const part6Questions = [
         question: "Which of the following is NOT a standalone resource?",
         options: ["Connection", "Export", "Import", "Flow Step"],
         correctAnswer: "Flow Step",
-        explanation: "Flow steps belong to specific flows. / Flow Step เป็นส่วนหนึ่งของโฟลว์ ไม่ใช่วัตถุอิสระ",
+        explanation: "Flow steps belong to specific flows.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Flow Components"]
     },
     {
@@ -513,7 +513,7 @@ const part6Questions = [
         question: "Which HTTP method is commonly used to partially update a record?",
         options: ["POST", "PUT", "PATCH", "GET"],
         correctAnswer: "PATCH",
-        explanation: "PATCH is for partial updates. / PATCH ใช้สำหรับการอัปเดตบางส่วน",
+        explanation: "PATCH is for partial updates.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|APIs"]
     },
     {
@@ -522,7 +522,7 @@ const part6Questions = [
         question: "What is required to allow external systems to access Celigo APIs?",
         options: ["Username", "API Token", "EDI Profile", "Agent"],
         correctAnswer: "API Token",
-        explanation: "API Tokens provide secure external access. / API Token ใช้สำหรับการเข้าถึงจากระบบภายนอกอย่างปลอดภัย",
+        explanation: "API Tokens provide secure external access.",
         chapter: ["Level 4 - Introducing Developer Tools|Celigo Platform API"]
     },
     {
@@ -531,7 +531,7 @@ const part6Questions = [
         question: "Which tool is best for learning and experimenting with Handlebars syntax?",
         options: ["Flow Builder", "Playground", "Reports", "Recycle Bin"],
         correctAnswer: "Playground",
-        explanation: "Playground is for testing expressions. / Playground เหมาะกับการทดสอบ Handlebars",
+        explanation: "Playground is for testing expressions.",
         chapter: ["Level 4 - Introducing Developer Tools|Playground"]
     },
     {
@@ -540,7 +540,7 @@ const part6Questions = [
         question: "Does an 'Integration App' allow users to modify locked components?",
         options: ["Yes", "No"],
         correctAnswer: "No",
-        explanation: "Integration Apps have managed/locked components. / Integration App มีส่วนประกอบที่ถูกล็อกไว้",
+        explanation: "Integration Apps have managed/locked components.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Marketplace"]
     },
     {
@@ -549,7 +549,7 @@ const part6Questions = [
         question: "What syntax is used for a dynamic field in mapping? (e.g. {{field}})",
         options: [],
         correctAnswer: "Handlebars",
-        explanation: "Handlebars is the templating language. / Handlebars คือภาษาเทมเพลตที่ใช้",
+        explanation: "Handlebars is the templating language.",
         chapter: ["Level 4 - Introducing Developer Tools|Hooks & Handlebars"]
     },
 
@@ -560,7 +560,7 @@ const part6Questions = [
         question: "Which Dashboard view is most useful for checking currently active flows?",
         options: ["Running flows tab", "Completed flows tab", "Errors tab", "Settings"],
         correctAnswer: "Running flows tab",
-        explanation: "Shows active executions. / แสดงโฟลว์ที่กำลังรันอยู่",
+        explanation: "Shows active executions.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Celigo Platform User Interface"]
     },
     {
@@ -569,7 +569,7 @@ const part6Questions = [
         question: "Which component is needed to schedule a flow to run every hour?",
         options: ["Mapper", "Scheduler", "Hook", "Filter"],
         correctAnswer: "Scheduler",
-        explanation: "Schedulers automate flow timing. / Scheduler ใช้กำหนดเวลาการทำงานของโฟลว์",
+        explanation: "Schedulers automate flow timing.",
         chapter: ["Level 2 - Exploring Flow Builder|Flow Scheduling"]
     },
     {
@@ -578,7 +578,7 @@ const part6Questions = [
         question: "What indicates a field is required in Mapper 2.0?",
         options: ["Green dot", "Red asterisk (*)", "Yellow gear", "Blue box"],
         correctAnswer: "Red asterisk (*)",
-        explanation: "Asterisks indicate mandatory fields. / ดอกจันสีแดงแสดงว่าเป็นฟิลด์ที่จำเป็น",
+        explanation: "Asterisks indicate mandatory fields.",
         chapter: ["Level 2 - Exploring Flow Builder|Mapping & Field Mapping"]
     },
     {
@@ -587,7 +587,7 @@ const part6Questions = [
         question: "Can you change the Source of a flow after it has been created?",
         options: ["Yes", "No"],
         correctAnswer: "Yes",
-        explanation: "Flow sources can be swapped/edited. / สามารถแก้ไข Source ของโฟลว์ได้",
+        explanation: "Flow sources can be swapped/edited.",
         chapter: ["Level 2 - Exploring Flow Builder|Source"]
     },
     {
@@ -596,7 +596,7 @@ const part6Questions = [
         question: "What is the result of using {{upper first_name}} in Handlebars?",
         options: ["Lowercase name", "Uppercase name", "Reversed name", "First name only"],
         correctAnswer: "Uppercase name",
-        explanation: "Upper is a built-in helper. / Upper เป็นฟังก์ชันแปลงเป็นตัวพิมพ์ใหญ่",
+        explanation: "Upper is a built-in helper.",
         chapter: ["Level 4 - Introducing Developer Tools|Hooks & Handlebars"]
     },
     {
@@ -605,7 +605,7 @@ const part6Questions = [
         question: "Which resource type handles B2B standard documents?",
         options: ["API Token", "EDI Profile", "Lookup Cache", "Agent"],
         correctAnswer: "EDI Profile",
-        explanation: "EDI Profiles manage B2B standards. / EDI Profile จัดการเอกสารมาตรฐาน B2B",
+        explanation: "EDI Profiles manage B2B standards.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
     },
     {
@@ -614,7 +614,7 @@ const part6Questions = [
         question: "Where do you manage user invitations to your Celigo account?",
         options: ["Dashboard", "Users tab", "Resources", "Tools"],
         correctAnswer: "Users tab",
-        explanation: "Users are managed in the account settings. / จัดการสมาชิกในแท็บ Users",
+        explanation: "Users are managed in the account settings.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     },
     {
@@ -623,7 +623,7 @@ const part6Questions = [
         question: "Is 'Mapper 2.0' the only way to map fields in Celigo?",
         options: ["Yes", "No"],
         correctAnswer: "No",
-        explanation: "Advanced users can use scripts/AFEs. / สามารถใช้ Script หรือ AFE แทนได้",
+        explanation: "Advanced users can use scripts/AFEs.",
         chapter: ["Level 2 - Exploring Flow Builder|Mapping & Field Mapping"]
     },
     {
@@ -632,7 +632,7 @@ const part6Questions = [
         question: "Which tool would you use to create a webhook for an external system?",
         options: ["API Builder", "Data Loader", "Report", "Lookup"],
         correctAnswer: "API Builder",
-        explanation: "Webhooks are built using the API Builder. / Webhook สร้างได้โดยใช้ API Builder",
+        explanation: "Webhooks are built using the API Builder.",
         chapter: ["Level 4 - Introducing Developer Tools|JavaScript APIs (My APIs)"]
     },
     {
@@ -641,7 +641,7 @@ const part6Questions = [
         question: "What color is the status dot for a successful flow run?",
         options: [],
         correctAnswer: "Green",
-        explanation: "Green indicates success. / สีเขียวหมายถึงรันสำเร็จ",
+        explanation: "Green indicates success.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Celigo Platform User Interface"]
     },
 
@@ -652,7 +652,7 @@ const part6Questions = [
         question: "If a flow has 'Open Errors', where is the best place to troubleshoot?",
         options: ["Marketplace", "Error Management/Dashboard", "Recycle Bin", "Tools"],
         correctAnswer: "Error Management/Dashboard",
-        explanation: "Dashboard lists specific error details. / ดูรายละเอียดข้อผิดพลาดได้ที่ Dashboard",
+        explanation: "Dashboard lists specific error details.",
         chapter: ["Level 2 - Exploring Flow Builder|Error Management"]
     },
     {
@@ -661,7 +661,7 @@ const part6Questions = [
         question: "What does 'iPaaS' stand for?",
         options: ["Integrated Platform", "Integration Platform as a Service", "Internal Protocol", "Interface Program"],
         correctAnswer: "Integration Platform as a Service",
-        explanation: "Celigo is an iPaaS solution. / Celigo คือแพลตฟอร์มการเชื่อมต่อในรูปแบบบริการ",
+        explanation: "Celigo is an iPaaS solution.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Flow Components"]
     },
     {
@@ -670,7 +670,7 @@ const part6Questions = [
         question: "Which of these allows custom logic during a flow execution?",
         options: ["Scheduler", "Hook", "Audit Log", "Tile"],
         correctAnswer: "Hook",
-        explanation: "Hooks allow running scripts during a flow. / Hook ใช้รันสคริปต์ระหว่างโฟลว์ทำงาน",
+        explanation: "Hooks allow running scripts during a flow.",
         chapter: ["Level 4 - Introducing Developer Tools|Hooks & Handlebars"]
     },
     {
@@ -679,7 +679,7 @@ const part6Questions = [
         question: "Can one integration folder contain flows for different applications?",
         options: ["Yes", "No"],
         correctAnswer: "Yes",
-        explanation: "Integrations are just organizational containers. / Integration คือกล่องเก็บโฟลว์ที่ยืดหยุ่น",
+        explanation: "Integrations are just organizational containers.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Celigo Platform User Interface"]
     },
     {
@@ -688,7 +688,7 @@ const part6Questions = [
         question: "What tool helps you format complex JSON structures in mapping?",
         options: ["Data Loader", "Advanced Field Editor (AFE)", "Audit Log", "Recycle Bin"],
         correctAnswer: "Advanced Field Editor (AFE)",
-        explanation: "AFE provides more room for complex logic. / AFE ช่วยในการเขียนโครงสร้าง JSON ที่ซับซ้อน",
+        explanation: "AFE provides more room for complex logic.",
         chapter: ["Level 2 - Exploring Flow Builder|Mapping & Field Mapping"]
     },
     {
@@ -697,7 +697,7 @@ const part6Questions = [
         question: "Which connection protocol is most commonly used for modern web APIs?",
         options: ["FTP", "REST/HTTP", "SOAP", "AS2"],
         correctAnswer: "REST/HTTP",
-        explanation: "REST is the standard for modern APIs. / REST เป็นมาตรฐานสำหรับ API สมัยใหม่",
+        explanation: "REST is the standard for modern APIs.",
         chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
     },
     {
@@ -706,7 +706,7 @@ const part6Questions = [
         question: "To move a file from an FTP server to a folder, which connector would you use?",
         options: ["HTTP", "FTP", "Database", "Marketplace"],
         correctAnswer: "FTP",
-        explanation: "FTP connectors handle file transfers. / FTP Connector ใช้สำหรับย้ายไฟล์",
+        explanation: "FTP connectors handle file transfers.",
         chapter: ["Level 3 - Using Universal Connectors & Databases|FTP Connectors"]
     },
     {
@@ -715,7 +715,7 @@ const part6Questions = [
         question: "What is 'My APIs' in the Resources menu?",
         options: ["Shared logins", "Custom APIs created in API Builder", "A list of help articles", "Standard Templates"],
         correctAnswer: "Custom APIs created in API Builder",
-        explanation: "It stores your custom-built API endpoints. / เก็บ API ที่คุณสร้างขึ้นเอง",
+        explanation: "It stores your custom-built API endpoints.",
         chapter: ["Level 4 - Introducing Developer Tools|JavaScript APIs (My APIs)"]
     },
     {
@@ -724,7 +724,7 @@ const part6Questions = [
         question: "Does Celigo allow multi-factor authentication for all users?",
         options: ["Yes", "No"],
         correctAnswer: "Yes",
-        explanation: "MFA is a core security feature. / MFA เป็นฟีเจอร์ความปลอดภัยหลัก",
+        explanation: "MFA is a core security feature.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     },
     {
@@ -733,7 +733,7 @@ const part6Questions = [
         question: "Which of the following describes the 'Owner' role in Celigo?",
         options: ["Lowest access", "Full access + manage account billing", "Only view flows", "Temporary access"],
         correctAnswer: "Full access + manage account billing",
-        explanation: "The Owner is the top-level account manager. / Owner คือผู้จัดการบัญชีระดับสูงสุด",
+        explanation: "The Owner is the top-level account manager.",
         chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
     }
 ];

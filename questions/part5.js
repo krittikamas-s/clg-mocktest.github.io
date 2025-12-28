@@ -2898,5 +2898,661 @@ const part5Questions = [
         correctAnswer: "5 fields",
         explanation: "A standard Cron expression in Celigo uses 5 fields: Minute, Hour, Day of Month, Month, and Day of Week.",
         chapter: ["Level 2 - Exploring Flow Builder|Flow Scheduling"]
+    },
+	// --- TOPIC: FLOW LOGIC & FUNDAMENTALS ---
+    {
+        id: "p5_q245",
+        type: "multiple-choice",
+        question: "You are configuring a flow with a specific export filter. If the first condition in the flow (the export step) does not find any records that match your criteria during a scheduled run, what happens to the flow execution?",
+        options: ["The flow fails with an error.", "The flow pauses and waits for data.", "The flow runs successfully with 0 records processed.", "The flow sends an alert email immediately."],
+        correctAnswer: "The flow runs successfully with 0 records processed.",
+        explanation: "If an export returns no data because criteria aren't met, the flow considers this a successful run with nothing to process.",
+        chapter: ["Level 2 - Exploring Flow Builder|Source"]
+    },
+    {
+        id: "p5_q246",
+        type: "multiple-select",
+        question: "A developer needs to access the Flow Builder to edit an existing integration. Which of the following are valid ways (entry points) to navigate to the Flow Builder? (Select 2)",
+        options: ["Click on the flow name within the Integration tile.", "Click on the 'Resources' tab in the main menu.", "Click on the 'Edit' pencil icon next to a flow in the Flows list.", "Click on 'Playground' in the user profile."],
+        correctAnswer: ["Click on the flow name within the Integration tile.", "Click on the 'Edit' pencil icon next to a flow in the Flows list."],
+        explanation: "You can enter the Flow Builder by clicking the flow name directly or selecting the edit icon from the list of flows within an integration.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Basic Flow Builder"]
+    },
+    {
+        id: "p5_q247",
+        type: "short-answer",
+        question: "If a pre-built Integration App (IA) or Template does not exist for the specific systems you need to connect, what is the standard approach to create the integration? (Answer: Build a ______ flow)",
+        options: [], 
+        correctAnswer: "Custom",
+        explanation: "When no pre-built solution exists in the Marketplace, you must build a Custom flow.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Marketplace"]
+    },
+    {
+        id: "p5_q248",
+        type: "multiple-choice",
+        question: "What is the primary purpose of using 'Test Mode' (Play button) when building a flow?",
+        options: ["To push all data to the production environment.", "To run the flow processing only one page of data (sample) without updating the 'Last Run' date.", "To debug connection errors only.", "To automatically generate documentation."],
+        correctAnswer: "To run the flow processing only one page of data (sample) without updating the 'Last Run' date.",
+        explanation: "Test Mode allows you to verify logic with a sample of data and does not advance the delta pointer.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
+    },
+
+    // --- TOPIC: HTTP & API HANDLING ---
+    {
+        id: "p5_q249",
+        type: "multiple-choice",
+        question: "Which HTTP status code is the standard 'Default Standard code' indicating an 'Unauthorized' request (e.g., bad password or token)?",
+        options: ["200", "401", "404", "500"],
+        correctAnswer: "401",
+        explanation: "HTTP 401 is the standard status code for 'Unauthorized' access failures.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
+    },
+    {
+        id: "p5_q250",
+        type: "multiple-choice",
+        question: "You are connecting to an API that limits the number of records returned in a single response. Where in the HTTP export settings do you configure the specific number of records (e.g., 10 or 50) per request?",
+        options: ["Concurrency Settings", "Pagination Settings", "Error Handling", "Field Mapping"],
+        correctAnswer: "Pagination Settings",
+        explanation: "You configure 'Page Size' or records per page inside the Pagination settings of the export.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
+    },
+    {
+        id: "p5_q251",
+        type: "multiple-choice",
+        question: "You are setting up an HTTP import. By default, a 404 error usually fails a flow. If you want the flow to ignore the error when a resource is not found (e.g., trying to update a record that doesn't exist), what setting should you use?",
+        options: ["Retry 3 times", "Ignore 404 (Not Found)", "Set Concurrency to 1", "Use a Pre-map Hook"],
+        correctAnswer: "Ignore 404 (Not Found)",
+        explanation: "The 'Ignore 404' setting tells the platform to treat a Not Found error as a non-failure event.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors", "Level 2 - Exploring Flow Builder|Error Management"]
+    },
+    {
+        id: "p5_q252",
+        type: "matching",
+        question: "Match the HTTP Status Code to its general meaning:",
+        rows: [
+            { id: 1, text: "401", correct: "Unauthorized" },
+            { id: 2, text: "404", correct: "Not Found" },
+            { id: 3, text: "200", correct: "Success" },
+            { id: 4, text: "500", correct: "Internal Server Error" }
+        ],
+        options: ["Success", "Unauthorized", "Not Found", "Internal Server Error"],
+        explanation: "401=Unauthorized, 404=Not Found, 200=Success, 500=Server Error.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
+    },
+
+    // --- TOPIC: FTP & FILE HANDLING ---
+    {
+        id: "p5_q253",
+        type: "multiple-choice",
+        question: "You are setting up a file transfer integration where security is critical. Which protocol is considered the most secure option available in Celigo?",
+        options: ["FTP", "SFTP", "TFTP", "HTTP"],
+        correctAnswer: "SFTP",
+        explanation: "SFTP (SSH File Transfer Protocol) is secure as it encrypts the session.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|FTP Connectors"]
+    },
+    {
+        id: "p5_q254",
+        type: "yes-no",
+        question: "You are processing files from an FTP server. Is it possible to configure the integration to automatically delete the file from the FTP server after it has been successfully processed?",
+        options: ["Yes", "No"],
+        correctAnswer: "Yes",
+        explanation: "There is a specific setting 'Delete file after processing' in the FTP export configuration.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|FTP Connectors"]
+    },
+
+    // --- TOPIC: MAPPING & TRANSFORMATION ---
+    {
+        id: "p5_q255",
+        type: "multiple-choice",
+        question: "You need to set a destination field to 'True' for every single record, regardless of what is in the source data. Which Mapping Type is appropriate?",
+        options: ["One-to-One", "Lookup", "Hardcoded", "Multi-Field"],
+        correctAnswer: "Hardcoded",
+        explanation: "Hardcoded mapping sets a static constant value for all records.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Mapping Types"]
+    },
+    {
+        id: "p5_q256",
+        type: "matching",
+        question: "Match the Mapping Type to its function:",
+        rows: [
+            { id: 1, text: "One-to-One", correct: "Maps a source field directly to a destination field" },
+            { id: 2, text: "Lookup", correct: "Searches for a value in a list or dynamic search" },
+            { id: 3, text: "Hardcoded", correct: "Sets a fixed constant value" }
+        ],
+        options: ["Maps a source field directly to a destination field", "Searches for a value in a list or dynamic search", "Sets a fixed constant value"],
+        explanation: "One-to-one is direct, Lookup finds values (e.g., ID to Name), Hardcoded is static.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Mapping Types"]
+    },
+    {
+        id: "p5_q257",
+        type: "multiple-choice",
+        question: "If standard mapping rules are not sufficient to transform your data (e.g., you need to perform complex math or array sorting), what feature should you use?",
+        options: ["Flow Scheduling", "JavaScript Hooks", "Group Grouping", "Connector Settings"],
+        correctAnswer: "JavaScript Hooks",
+        explanation: "JavaScript Hooks allow for complex, custom logic that standard UI mapping cannot handle.",
+        chapter: ["Level 4 - Introducing Developer Tools|Hooks & Handlebars"]
+    },
+
+    // --- TOPIC: CONCURRENCY & SETTINGS ---
+    {
+        id: "p5_q258",
+        type: "multiple-choice",
+        question: "You are syncing data that must be processed in a specific sequential order (FIFO). What value should you set for Concurrency?",
+        options: ["1", "5", "10", "25"],
+        correctAnswer: "1",
+        explanation: "Concurrency of 1 guarantees that records are processed one at a time, preserving order.",
+        chapter: ["Level 2 - Exploring Flow Builder|Advanced Flow Configurations"]
+    },
+    {
+        id: "p5_q259",
+        type: "multiple-choice",
+        question: "Conversely, if you have a massive amount of independent data (like updating 10,000 separate customer records) and speed is the priority, how should you configure Concurrency?",
+        options: ["Set it to 1", "Set it to a higher number (e.g., 5, 10, 20) depending on plan limits", "Disable Concurrency", "Use FTP instead"],
+        correctAnswer: "Set it to a higher number (e.g., 5, 10, 20) depending on plan limits",
+        explanation: "Higher concurrency allows parallel processing, significantly speeding up large batches of independent records.",
+        chapter: ["Level 2 - Exploring Flow Builder|Advanced Flow Configurations"]
+    },
+
+    // --- TOPIC: DEVELOPER TOOLS & PLAYGROUND ---
+    {
+        id: "p5_q260",
+        type: "yes-no",
+        question: "Can the 'Playground' tool be used to test both Handlebars expressions AND JavaScript functions?",
+        options: ["Yes", "No"],
+        correctAnswer: "Yes",
+        explanation: "The Playground supports testing for both Handlebars and custom JavaScript logic.",
+        chapter: ["Level 4 - Introducing Developer Tools|Playground"]
+    },
+    {
+        id: "p5_q261",
+        type: "short-answer",
+        question: "What specific developer tool allows you to intercept data 'Pre-map', 'Post-map', or 'Post-submit' to run custom scripts? (Answer: ______)",
+        options: [], 
+        correctAnswer: "Hook",
+        explanation: "Hooks are the script injection points at various stages of the flow execution.",
+        chapter: ["Level 4 - Introducing Developer Tools|Hooks & Handlebars"]
+    },
+
+    // --- TOPIC: CONNECTIONS & ACCOUNTS ---
+    {
+        id: "p5_q262",
+        type: "multiple-choice",
+        question: "If the password for one of your connected applications changes, where in Celigo must you update it?",
+        options: ["In every individual flow that uses the app", "In the 'Resources' -> 'Connections' (or Account) section", "In the Import step settings", "You don't need to update it"],
+        correctAnswer: "In the 'Resources' -> 'Connections' (or Account) section",
+        explanation: "Connections are managed centrally. Updating the Connection (Account) once updates it for all flows using it.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
+    },
+
+    // --- TOPIC: RESOURCES & HELP ---
+    {
+        id: "p5_q263",
+        type: "multiple-choice",
+        question: "Where is the best place to find official documentation, guides on Handlebars, and setup instructions for connectors?",
+        options: ["Celigo Help Center / Knowledge Base", "The Playground", "The Flow Dashboard", "The Error Logs"],
+        correctAnswer: "Celigo Help Center / Knowledge Base",
+        explanation: "The Help Center allows you to search for documentation on specific connectors and functions.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
+    },
+
+    // --- TOPIC: SITUATIONAL & ADVANCED ---
+    {
+        id: "p5_q264",
+        type: "multiple-choice",
+        question: "Situation: You are using a Custom Flow. You have successfully exported data, but the API response structure is very complex and nested. You need to simplify it before mapping. What is the best step to add?",
+        options: ["Add a Transformation step", "Increase Concurrency", "Use a 'Post-submit' hook", "Change the destination to FTP"],
+        correctAnswer: "Add a Transformation step",
+        explanation: "Transformation steps allow you to reshape JSON data structure before it reaches the mapping phase.",
+        chapter: ["Level 2 - Exploring Flow Builder|Data Flow"]
+    },
+    {
+        id: "p5_q265",
+        type: "multiple-choice",
+        question: "What does 'IA' typically stand for in the context of Celigo's marketplace?",
+        options: ["Internal Audit", "Integration App", "Intelligent Automation", "Import Assistant"],
+        correctAnswer: "Integration App",
+        explanation: "IA stands for Integration App, which is a pre-built, fully managed integration solution.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Marketplace"]
+    },
+    {
+        id: "p5_q266",
+        type: "yes-no",
+        question: "Is it possible to schedule a flow to run only on weekdays (Monday through Friday)?",
+        options: ["Yes", "No"],
+        correctAnswer: "Yes",
+        explanation: "The scheduling tools allow for advanced cron expressions or weekly selection to specify exact days.",
+        chapter: ["Level 2 - Exploring Flow Builder|Flow Scheduling"]
+    },
+    {
+        id: "p5_q267",
+        type: "multiple-choice",
+        question: "When using an HTTP connector, you receive a '502 Bad Gateway' error intermittently. What is the best practice to handle this temporary server issue?",
+        options: ["Hard code the value", "Configure 'Auto-retry' strategies", "Ignore the error permanently", "Switch to manual data entry"],
+        correctAnswer: "Configure 'Auto-retry' strategies",
+        explanation: "Intermittent server errors (500, 502, 503) should generally be handled with an auto-retry strategy.",
+        chapter: ["Level 2 - Exploring Flow Builder|Error Management"]
+    },
+    {
+        id: "p5_q268",
+        type: "multiple-select",
+        question: "Which of the following are valid Types of Hooks you can configure in a flow step? (Select 2)",
+        options: ["Pre-map", "Post-submit", "During-transfer", "Pre-login"],
+        correctAnswer: ["Pre-map", "Post-submit"],
+        explanation: "Common hooks include Pre-map (before mapping), Post-map (after mapping), and Post-submit (after data is sent).",
+        chapter: ["Level 4 - Introducing Developer Tools|Hooks & Handlebars"]
+    },
+    {
+        id: "p5_q269",
+        type: "multiple-choice",
+        question: "You need to export data from a REST API that requires a 'page' parameter in the URL (e.g., ?page=1). How does Celigo handle incrementing this number?",
+        options: ["You must write a Javascript loop", "You configure the 'Pagination' settings to 'Page Based' and define the page parameter", "It is automatic and cannot be changed", "You use a Lookup"],
+        correctAnswer: "You configure the 'Pagination' settings to 'Page Based' and define the page parameter",
+        explanation: "Celigo has built-in Pagination settings where you define which URL parameter controls the page number.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
+    },
+    {
+        id: "p5_q270",
+        type: "multiple-choice",
+        question: "In the 'Playground', if you want to test how a handlebar expression transforms a specific JSON object, where do you paste the JSON data?",
+        options: ["In the 'Script' window", "In the 'Input' (Data) window", "In the 'Console' log", "In the URL bar"],
+        correctAnswer: "In the 'Input' (Data) window",
+        explanation: "The Playground has a dedicated Input window for your sample JSON data and a Script/Template window for your code.",
+        chapter: ["Level 4 - Introducing Developer Tools|Playground"]
+    },
+    // --- HTTP Connectors: Status Codes & Response Handling ---
+    {
+        id: "p5_q271",
+        type: "multiple-choice",
+        question: "When configuring a custom HTTP connection, what is the purpose of the 'Override HTTP Status Code' setting in the 'Non-standard API response patterns' section?",
+        options: [
+            "To force all responses to be 200 OK.",
+            "To map a specific status code (e.g., 200) to an error if the API returns success headers but error bodies.",
+            "To ignore all 404 errors automatically.",
+            "To change the API documentation."
+        ],
+        correctAnswer: "To map a specific status code (e.g., 200) to an error if the API returns success headers but error bodies.",
+        explanation: "Some APIs return '200 OK' even when the request failed (containing an error message in the body). This setting tells Celigo to treat those 200s as errors based on the body content.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
+    },
+    {
+        id: "p5_q272",
+        type: "matching",
+        question: "Match the HTTP Status Code to its standard Celigo interpretation:",
+        rows: [
+            { id: 1, text: "Success (Request processed successfully)", correct: "200 OK" },
+            { id: 2, text: "Client Error (Authentication failed)", correct: "401 Unauthorized" },
+            { id: 3, text: "Rate Limit Exceeded (Too many requests)", correct: "429 Too Many Requests" },
+            { id: 4, text: "Server Error (Upstream issue)", correct: "502 Bad Gateway" }
+        ],
+        options: ["200 OK", "401 Unauthorized", "429 Too Many Requests", "502 Bad Gateway"],
+        explanation: "200 is success. 401 indicates auth failure. 429 is the standard for rate limiting. 502/500 indicates server-side issues.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors", "Level 1 - Understanding Celigo Fundamentals|APIs"]
+    },
+    {
+        id: "p5_q273",
+        type: "multiple-select",
+        question: "Which fields must be defined when configuring a 'Non-standard API rate limiter' in an HTTP connection? (Select 2)",
+        options: [
+            "Wait time between HTTP requests",
+            "Override HTTP status code for rate-limit errors",
+            "The administrator's email address",
+            "The API's logo URL"
+        ],
+        correctAnswer: ["Wait time between HTTP requests", "Override HTTP status code for rate-limit errors"],
+        explanation: "You need to define how long to wait and, optionally, which status code triggers the rate limit logic (if it differs from the standard 429).",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
+    },
+    {
+        id: "p5_q274",
+        type: "short-answer",
+        question: "If an API returns a 200 OK status but the response body contains `\"success\": false`, which field in the HTTP connection settings allows you to identify this as an error?",
+        options: [],
+        correctAnswer: ["Path to error field", "Path to error field in HTTP response body"],
+        explanation: "The 'Path to error field in HTTP response body' setting allows you to point to a specific JSON path (like `success` or `error_code`) to validate success despite the 200 status.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
+    },
+    {
+        id: "p5_q275",
+        type: "multiple-choice",
+        question: "When testing a new HTTP connection, why would you define a 'Ping' request?",
+        options: [
+            "To delete all data in the destination.",
+            "To send a lightweight request (like GET /users/me) to verify the credentials are valid.",
+            "To speed up the internet connection.",
+            "To ignore SSL errors."
+        ],
+        correctAnswer: "To send a lightweight request (like GET /users/me) to verify the credentials are valid.",
+        explanation: "The Ping request is used by the 'Test Connection' button to validate connectivity and auth without transferring real data.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
+    },
+
+    // --- FTP Connectors: Channels & Modes ---
+    {
+        id: "p5_q276",
+        type: "multiple-choice",
+        question: "In the context of FTP connections, which protocol requires 'Socket Reuse' (reusing the SSL session ID) for the data channel to work securely?",
+        options: ["SFTP", "FTPS", "Standard FTP", "HTTP"],
+        correctAnswer: "FTPS",
+        explanation: "FTPS (FTP over SSL) often requires socket reuse so the data channel trusts the control channel's authentication. SFTP uses a single SSH tunnel and does not use separate sockets in this way.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|FTP Connectors"]
+    },
+    {
+        id: "p5_q277",
+        type: "matching",
+        question: "Match the FTP Protocol to its port and channel structure:",
+        rows: [
+            { id: 1, text: "Uses Port 22 and a single SSH tunnel", correct: "SFTP" },
+            { id: 2, text: "Uses Port 21 (Control) and a separate Data channel (often unencrypted data)", correct: "FTP" },
+            { id: 3, text: "Uses Port 990 (Implicit) or 21 (Explicit) with SSL/TLS encryption", correct: "FTPS" }
+        ],
+        options: ["SFTP", "FTP", "FTPS"],
+        explanation: "SFTP runs over SSH (port 22). FTP is the legacy standard (port 21). FTPS adds SSL/TLS layers to the standard FTP structure.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|FTP Connectors"]
+    },
+    {
+        id: "p5_q278",
+        type: "yes-no",
+        question: "When using 'Passive Mode' in an FTP connection, does the Client (Celigo) initiate the data connection to the Server?",
+        options: ["Yes", "No"],
+        correctAnswer: "Yes",
+        explanation: "In Passive Mode, the server opens a random port and tells the client to connect to it. This is friendlier for firewalls than Active Mode.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|FTP Connectors"]
+    },
+    {
+        id: "p5_q279",
+        type: "multiple-choice",
+        question: "What does the 'Entry Parser' field in an FTP connection configuration allow you to handle?",
+        options: [
+            "Decrypting PGP files.",
+            "Non-standard directory listing formats returned by the FTP server.",
+            "Compressing files before upload.",
+            "Renaming files automatically."
+        ],
+        correctAnswer: "Non-standard directory listing formats returned by the FTP server.",
+        explanation: "If the FTP server returns file lists in a format that isn't standard Unix/Linux or Windows, the Entry Parser script allows Celigo to interpret the file list correctly.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|FTP Connectors"]
+    },
+    
+    // --- Database Connectors: Connection & Errors ---
+    {
+        id: "p5_q280",
+        type: "multiple-choice",
+        question: "When connecting to a database behind a firewall without whitelisting IPs, what component must be installed on the local server?",
+        options: ["Celigo Agent", "API Gateway", "Reverse Proxy", "VPN Tunnel"],
+        correctAnswer: "Celigo Agent",
+        explanation: "The On-Premise Agent establishes a secure outbound connection from the local server to Celigo, bypassing the need for inbound firewall holes.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|Database Connectors"]
+    },
+    {
+        id: "p5_q281",
+        type: "short-answer",
+        question: "Which common SQL error might occur if you try to Insert a record that already exists, and how can Celigo's 'Import' step configuration handle it? (Answer with the operation name)",
+        options: [],
+        correctAnswer: ["Upsert", "Merge"],
+        explanation: "A duplicate key error occurs on Insert. Using 'Upsert' (or Merge) handles this by updating the existing record instead of failing.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|Database Connectors", "Level 2 - Exploring Flow Builder|Destination & Lookup"]
+    },
+    {
+        id: "p5_q282",
+        type: "yes-no",
+        question: "If a Database Import is set to 'Update', will it fail by default if the record matching the criteria is not found?",
+        options: ["Yes", "No"],
+        correctAnswer: "Yes",
+        explanation: "By default, an Update operation expects a match. You must check 'Ignore missing records' if you want it to succeed silently when no match is found.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|Database Connectors"]
+    },
+    {
+        id: "p5_q283",
+        type: "matching",
+        question: "Match the Database Connection Mode to its requirement:",
+        rows: [
+            { id: 1, text: "Direct connection over the internet (Public IP)", correct: "Cloud" },
+            { id: 2, text: "Requires a local software agent to tunnel traffic", correct: "On-Premise (Agent)" }
+        ],
+        options: ["Cloud", "On-Premise (Agent)"],
+        explanation: "Cloud mode connects directly (often needing whitelisting). On-Premise mode uses the installed agent for secure tunneling.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|Database Connectors"]
+    },
+
+    // --- Cross-Connector Error Handling ---
+    {
+        id: "p5_q284",
+        type: "multiple-select",
+        question: "Which of the following responses from an HTTP API would typically classify as a 'Governance' or 'Rate Limit' error in Celigo? (Select 2)",
+        options: [
+            "429 Too Many Requests",
+            "503 Service Unavailable (with Retry-After header)",
+            "404 Not Found",
+            "200 OK"
+        ],
+        correctAnswer: ["429 Too Many Requests", "503 Service Unavailable (with Retry-After header)"],
+        explanation: "429 is the explicit rate limit code. 503 can also indicate temporary overloading, often accompanied by a Retry-After header which Celigo respects.",
+        chapter: ["Level 2 - Exploring Flow Builder|Error Management", "Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
+    },
+    {
+        id: "p5_q285",
+        type: "matching",
+        question: "Match the error scenario to the likely Celigo Error Classification:",
+        rows: [
+            { id: 1, text: "API returns 404 for a specific resource ID", correct: "Missing" },
+            { id: 2, text: "API returns 401 due to expired token", correct: "Connection / Auth" },
+            { id: 3, text: "JSON payload has a missing comma", correct: "Parse / Data" }
+        ],
+        options: ["Missing", "Connection / Auth", "Parse / Data"],
+        explanation: "404 implies data is missing. 401 is an authentication/connection issue. Malformed JSON is a parsing error.",
+        chapter: ["Level 2 - Exploring Flow Builder|Error Management"]
+    },
+    // --- Permissions & Account Owner ---
+    {
+        id: "p5_q286",
+        type: "multiple-choice",
+        question: "Who is the only user role authorized to transfer 'Account Owner' status to another user?",
+        options: ["Administrator", "Account Owner", "Any User", "Developer"],
+        correctAnswer: "Account Owner",
+        explanation: "Only the current Account Owner has the permission to transfer ownership to another user. Administrators cannot perform this action.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
+    },
+    {
+        id: "p5_q287",
+        type: "multiple-choice",
+        question: "Where do you navigate to view your own user permissions and role?",
+        options: ["Marketplace", "Tools > Data Loader", "Account Menu (Avatar) > Users / Profile", "The Dashboard"],
+        correctAnswer: "Account Menu (Avatar) > Users / Profile",
+        explanation: "You can check your access level and role by clicking your Account menu (avatar) in the top right and selecting the Users or Profile section.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
+    },
+    
+    // --- Inviting Users ---
+    {
+        id: "p5_q288",
+        type: "yes-no",
+        question: "If 'A' is the Account Owner, can they invite new people to the Celigo account?",
+        options: ["Yes", "No"],
+        correctAnswer: "Yes",
+        explanation: "Yes, Account Owners (and Administrators) have full rights to invite new users and assign them roles.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Account Settings"]
+    },
+
+    // --- Reports ---
+    {
+        id: "p5_q289",
+        type: "short-answer",
+        question: "For how many days are generated Celigo reports available for download?",
+        options: [],
+        correctAnswer: "30",
+        explanation: "Reports generated in the Tools > Reports section are typically available for download for 30 days before they expire.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Tools & Resources"]
+    },
+
+    // --- Adding Data (Transformations/Hooks) ---
+    {
+        id: "p5_q290",
+        type: "multiple-choice",
+        question: "If you need to add or modify data (e.g., calculate a value or add a timestamp) while it is being sent to the Destination, which features are relevant?",
+        options: ["Transformations and Hooks", "Connections only", "Marketplace", "User Settings"],
+        correctAnswer: "Transformations and Hooks",
+        explanation: "Transformations (using Handlebars) and Hooks (PreMap/PostMap scripts) are the primary tools for modifying data in transit before it reaches the destination.",
+        chapter: ["Level 2 - Exploring Flow Builder|Advanced Flow Configurations", "Level 4 - Introducing Developer Tools|Hooks & Handlebars"]
+    },
+
+    // --- Static vs Dynamic ---
+    {
+        id: "p5_q291",
+        type: "multiple-choice",
+        question: "Which mapping type offers the specific options of 'Static' (fixed value-to-value) and 'Dynamic' (search-based)?",
+        options: ["Standard Mapping", "Lookup Mapping", "Hardcoded Mapping", "Multi-Field Mapping"],
+        correctAnswer: "Lookup Mapping",
+        explanation: "Lookup mapping allows you to choose between a 'Static' list (e.g., 'US'->'USA') or a 'Dynamic' lookup that searches the destination app.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Mapping Types", "Level 2 - Exploring Flow Builder|Destination & Lookup"]
+    },
+    {
+        id: "p5_q292",
+        type: "short-answer",
+        question: "What are the two options available when selecting the Lookup mapping type?",
+        options: [],
+        correctAnswer: ["Static", "Dynamic"],
+        explanation: "The two modes for lookups are Static (hardcoded list) and Dynamic (API search).",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Mapping Types"]
+    },
+
+    // --- Lookup Cache ---
+    {
+        id: "p5_q293",
+        type: "multiple-choice",
+        question: "What is the primary purpose of a 'Lookup Cache'?",
+        options: [
+            "To store error logs.",
+            "To store static data (like country codes) locally to avoid repeated API calls to the destination.",
+            "To delete data.",
+            "To run flows faster."
+        ],
+        correctAnswer: "To store static data (like country codes) locally to avoid repeated API calls to the destination.",
+        explanation: "A Lookup Cache improves performance by storing data that doesn't change often, preventing the need to fetch it from the API for every record.",
+        chapter: ["Level 2 - Exploring Flow Builder|Destination & Lookup"]
+    },
+
+    // --- HTTP Codes (404, 401) ---
+    {
+        id: "p5_q294",
+        type: "yes-no",
+        question: "Can the HTTP status code 404 (Not Found) appear in methods other than GET (e.g., DELETE or PATCH)?",
+        options: ["Yes", "No"],
+        correctAnswer: "Yes",
+        explanation: "Yes, a 404 code simply means the resource was not found, regardless of the method (e.g., trying to DELETE a record that doesn't exist).",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
+    },
+    {
+        id: "p5_q295",
+        type: "short-answer",
+        question: "Which HTTP status code represents an 'Unauthorized' error?",
+        options: [],
+        correctAnswer: "401",
+        explanation: "401 is the standard HTTP status code for Unauthorized access (often due to missing or invalid credentials).",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
+    },
+
+    // --- Options & Upsert ---
+    {
+        id: "p5_q296",
+        type: "multiple-choice",
+        question: "In an Import step, which operation type uses a unique key (External ID) to decide whether to create a new record or update an existing one?",
+        options: ["Insert", "Update", "Upsert", "Delete"],
+        correctAnswer: "Upsert",
+        explanation: "Upsert (Update/Insert) checks for an existing record using a unique key. If found, it updates; if not, it inserts.",
+        chapter: ["Level 2 - Exploring Flow Builder|Destination & Lookup"]
+    },
+
+    // --- Mapping Symbols & UI ---
+    {
+        id: "p5_q297",
+        type: "matching",
+        question: "Match the Mapping Type to its description/symbol concept:",
+        rows: [
+            { id: 1, text: "Fixed text value (often shown with quotes)", correct: "Hardcoded" },
+            { id: 2, text: "Standard 1-to-1 mapping", correct: "Standard" },
+            { id: 3, text: "Complex logic using Handlebars (Symbol 'E' or 'M' in legacy)", correct: "Expression / Multi-field" }
+        ],
+        options: ["Hardcoded", "Standard", "Expression / Multi-field"],
+        explanation: "Hardcoded sets a fixed value. Standard maps fields directly. Expressions (or Multi-field in legacy) handle complex logic.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Mapping Types"]
+    },
+    {
+        id: "p5_q298",
+        type: "short-answer",
+        question: "In the Flow Builder, where is the 'Enable' (On/Off) toggle located?",
+        options: [],
+        correctAnswer: "Top Right",
+        explanation: "The switch to enable or disable a flow is located in the top-right corner of the Flow Builder interface.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Basic Flow Builder"]
+    },
+    {
+        id: "p5_q299",
+        type: "multiple-choice",
+        question: "Where can you see a list of all your Integrations?",
+        options: ["The Dashboard / Home Page", "The Recycle Bin", "The Login Screen", "The Help Center"],
+        correctAnswer: "The Dashboard / Home Page",
+        explanation: "After logging in, the Home Page (Dashboard) displays tiles or a list of all your integrations.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Celigo Platform User Interface"]
+    },
+    {
+        id: "p5_q300",
+        type: "multiple-choice",
+        question: "To change the mapping type of a field (e.g., from Standard to Lookup), where do you click in the Mapper?",
+        options: ["The Settings (Gear) icon next to the field", "The delete button", "The source field", "The browser back button"],
+        correctAnswer: "The Settings (Gear) icon next to the field",
+        explanation: "The gear/settings icon on the mapping row opens the panel where you can select the Mapping Type (Standard, Lookup, Hardcoded, etc.).",
+        chapter: ["Level 2 - Exploring Flow Builder|Mapping & Field Mapping"]
+    },
+
+    // --- Flow Creation Sequence ---
+    {
+        id: "p5_q301",
+        type: "multiple-choice",
+        question: "What is the logical sequence for creating a basic flow?",
+        options: [
+            "1. Source -> 2. Destination -> 3. Mapping -> 4. Run Flow",
+            "1. Run Flow -> 2. Mapping -> 3. Source",
+            "1. Destination -> 2. Run Flow -> 3. Mapping",
+            "1. Mapping -> 2. Source -> 3. Destination"
+        ],
+        correctAnswer: "1. Source -> 2. Destination -> 3. Mapping -> 4. Run Flow",
+        explanation: "You must first define where data comes from (Source), where it goes (Destination), how to link the data (Mapping), and then execute it (Run).",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Basic Flow Builder"]
+    },
+
+    // --- Specific Terminology (Skip/Offset, HTTP vs REST) ---
+    {
+        id: "p5_q302",
+        type: "short-answer",
+        question: "In pagination settings, what is the 'Skip number parameter' also commonly known as?",
+        options: [],
+        correctAnswer: "Offset",
+        explanation: "In 'Limit/Offset' pagination, the skip parameter is technically the 'Offset' (how many records to skip).",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
+    },
+    {
+        id: "p5_q303",
+        type: "multiple-choice",
+        question: "Why is the 'HTTP' connector used to connect to 'RESTful APIs'?",
+        options: [
+            "Because RESTful APIs are built upon the HTTP protocol.",
+            "Because HTTP is faster than REST.",
+            "Because REST APIs do not use URLs.",
+            "Because Celigo does not support REST."
+        ],
+        correctAnswer: "Because RESTful APIs are built upon the HTTP protocol.",
+        explanation: "REST is an architectural style that uses standard HTTP methods (GET, POST, etc.). Therefore, the Universal HTTP connector is the correct tool for REST APIs.",
+        chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors", "Level 1 - Understanding Celigo Fundamentals|APIs"]
+    },
+
+    // --- Marketplace Permissions ---
+    {
+        id: "p5_q304",
+        type: "yes-no",
+        question: "Are additional special permissions needed to simply view/browse the Marketplace?",
+        options: ["Yes", "No"],
+        correctAnswer: "No",
+        explanation: "Any user with basic access to the platform can view the Marketplace options; installing them may require higher permissions.",
+        chapter: ["Level 1 - Understanding Celigo Fundamentals|Marketplace"]
     }
-];
+]
