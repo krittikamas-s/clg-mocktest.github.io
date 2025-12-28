@@ -54,12 +54,13 @@ body {
 .header-info { text-align: right; font-size: 0.9rem; }
 .score-badge { font-weight: bold; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px; margin-top: 5px; display: inline-block;}
 
-/* --- Content Wrapper --- */
+/* --- Desktop Layout Fixes --- */
 #quiz-box-palete-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Horizontal for desktop */
     height: calc(100vh - 160px);
     overflow: hidden;
+    width: 100%;
 }
 
 #quiz-box {
@@ -76,6 +77,10 @@ body {
     background-color: #f8f9fa;
     padding: 1.5rem;
     overflow-y: auto;
+    /* Reset mobile drawer properties for desktop */
+    max-height: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 /* --- Typography & Elements --- */
@@ -199,10 +204,13 @@ h2#question-text {
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-/* --- Mobile Specific Overrides --- */
-#mobile-map-toggle { display: none; }
+/* Ensure the toggle is STERNLY hidden on desktop */
+#mobile-map-toggle { 
+    display: none !important; 
+}
 
 @media (max-width: 768px) {
+    
     .quiz-container { 
         width: 100%; 
         margin: 0; 
@@ -212,59 +220,49 @@ h2#question-text {
     }
 
     #quiz-box-palete-container { 
-        flex-direction: column; 
+        flex-direction: column; /* Stack for mobile */
         height: calc(100vh - 70px); 
-        overflow: hidden; 
-        position: relative;
     }
 
-    #quiz-box { 
-        padding: 1rem; 
-        order: 2; 
-        flex: 1; 
-        overflow-y: auto;
-    }
-    
     #mobile-map-toggle {
-        display: flex; 
-        justify-content: space-between; 
+        display: flex !important; /* Show only on mobile */
+        justify-content: space-between;
         align-items: center;
-        width: 100%; 
+        width: 100%;
         padding: 12px 20px;
-        background-color: #ffffff; 
-        color: var(--primary-blue); 
+        background-color: #ffffff;
+        color: var(--primary-blue);
         border-bottom: 2px solid #ddd;
-        order: 1; 
-        z-index: 10;
+        cursor: pointer; /* Safari click trigger */
+        z-index: 100;
     }
 
     .palette-container {
-        width: 100%; 
-        /* Safari Fix: Use opacity and visibility alongside max-height */
-        max-height: 0; 
+        width: 100%;
+        max-height: 0; /* Collapsed */
+        padding: 0;
         opacity: 0;
-        visibility: hidden;
-        padding: 0; 
+        visibility: hidden; /* Safari Fix */
         overflow: hidden;
-        /* Force Hardware Acceleration for smoother iOS transitions */
-        transform: translateZ(0); 
-        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                    opacity 0.3s ease, 
-                    padding 0.3s ease;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
         background-color: #f8f9fa;
-        order: 1; 
+        order: 1; /* Appears below toggle, above question */
     }
 
+    /* Use a specific class to "stick" them together and open */
     .palette-container.open { 
-        /* Use 50vh or a large fixed pixel value for Safari stability */
         max-height: 50vh; 
         opacity: 1;
         visibility: visible;
-        padding: 1rem; 
-        overflow-y: auto; 
+        padding: 1rem;
+        overflow-y: auto;
         border-bottom: 2px solid #ddd;
-        /* Prevent elastic bouncing from hiding the toggle on iOS */
-        -webkit-overflow-scrolling: touch; 
+        -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
+    }
+
+    #quiz-box { 
+        order: 2; /* Question box below the map */
+        padding: 1rem;
     }
 
     /* Beautiful Nav Buttons Fix for Safari */
