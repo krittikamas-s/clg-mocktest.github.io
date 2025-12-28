@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celigo Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="quiz-container">
+        <div class="header">
+            <h1>Celigo Mock Cert Exam</h1>
+            <div class="header-info">
+                <div id="progress-text">Question 1 / --</div>
+                <div class="score-badge" id="score-display">Score: 0</div>
+            </div>
+        </div>
+
+        <div id="quiz-box-palete-container">
+            <div id="quiz-box">
+                <div id="chapter-display"
+                    style="color: #666; font-size: 0.9rem; margin-bottom: 10px; font-weight: bold; border-left: 3px solid var(--primary-blue); padding-left: 10px;">
+                </div>
+                <h2 id="question-text">Loading Question...</h2>
+
+                <img id="question-image" class="hidden" alt="Question Diagram">
+
+                <div id="options-container" class="options-grid hidden"></div>
+                <div id="matching-container" class="matching-grid hidden"></div>
+
+                <div id="input-container" class="hidden">
+                    <input type="text" id="short-answer-input" placeholder="Type your answer here..."
+                        autocomplete="off">
+                </div>
+
+                <button id="submit-answer-btn" class="primary-btn hidden" style="margin-top: 15px; width: 100%;">Submit
+                    Answer</button>
+
+                <div id="feedback-area" class="hidden">
+                    <h3 id="feedback-title"></h3>
+                    <p id="feedback-text"></p>
+                </div>
+
+                <div class="nav-buttons">
+                    <button id="back-btn" class="secondary-btn" disabled>Previous</button>
+                    <button id="next-btn" class="primary-btn">Next Question ➝</button>
+                </div>
+            </div>
+
+            <div class="palette-container">
+                <div class="palette-label">Question Map:</div>
+                <div id="palette-grid" class="palette-grid"></div>
+            </div>
+        </div>
+
+        <div id="results-screen" class="hidden" style="text-align: center; padding: 40px;">
+        </div>
+    </div>
+
+    <script src="questions/part1.js"></script>
+    <script src="questions/part2.js"></script>
+    <script src="questions/part3.js"></script>
+    <script src="questions/part4.js"></script>
+    <script src="questions/part5.js"></script>
+    <script src="questions/part6.js"></script>
+    <script src="questions/part7.js"></script>
+    <script src="questions/part8.js"></script>
+    <script src="questions/part9.js"></script>
+
+    <script src="main.js"></script>
+
+    <script>
+        const quiz = new QuizManager();
+
+        // DOM Elements
+        const chapterDisplay = document.getElementById('chapter-display');
+        const questionText = document.getElementById('question-text');
+        const questionImage = document.getElementById('question-image');
+        const optionsContainer = document.getElementById('options-container');
+        const matchingContainer = document.getElementById('matching-container');
+        const inputContainer = document.getElementById('input-container');
+        const shortAnswerInput = document.getElementById('short-answer-input');
+        const submitAnswerBtn = document.getElementById('submit-answer-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const backBtn = document.getElementById('back-btn');
+        const scoreDisplay = document.getElementById('score-display');
+        const progressText = document.getElementById('progress-text');
+        const paletteGrid = document.getElementById('palette-grid');
+        const quizBox = document.getElementById('quiz-box');
+        const resultsScreen = document.getElementById('results-screen');
+        const feedbackArea = document.getElementById('feedback-area');
+        const feedbackTitle = document.getElementById('feedback-title');
+        const feedbackText = document.getElementById('feedback-text');
+
+        if (quiz.allQuestions.length === 0) {
+            questionText.textContent = "Error: No questions found.";
+        } else {
+            createPalette();
+            renderQuestion();
+        }
+
+        // --- PALETTE LOGIC (ONLY ONE DEFINITION) ---
+        // --- UPDATED PALETTE LOGIC (GROUPED BY CHAPTER) ---
+        function createPalette() {
+            paletteGrid.innerHTML = '';
+
+            // 1. Group question indices by EVERY chapter they belong to
+            const grouped = {};
+            quiz.allQuestions.forEach((q, index) => {
+                const chapters = (q.chapter && q.chapter.length > 0) ? q.chapter : ["General"];
+
+                chapters.forEach(chap => {
+                    if (!grouped[chap]) {
+                        grouped[chap] = [];
+                    }
+                    grouped[chap].push(index);
+                });
+            });
+
+            // 2. Sort the chapter names
+            const sortedChapters = Object.keys(grouped).sort();
+
+            // 3. Render headers and buttons
+            sortedChapters.forEach(chapterName => {
+                const indices = grouped[chapterName];
+
+                // Calculate Score for this section
+                let correctInChapter = 0;
+                indices.forEach(idx => {
+                    if (quiz.history[idx] && quiz.history[idx].isCorrect) correctInChapter++;
+                });
+
+                // Create Header
+                const headerDiv = document.createElement('div');
+                headerDiv.className = 'palette-chapter-header-container';
+                headerDiv.style.cssText = "grid-column: 1 / -1; margin-top: 15px; border-bottom: 2px solid #eee; padding-bottom: 5px; display: flex; justify-content: space-between; align-items: flex-end;";
+                headerDiv.innerHTML = `
+            <div style="font-weight: bold; color: #003292; font-size: 0.8rem; text-transform: uppercase;">${chapterName}</div>
+            <div style="font-size: 0.75rem; color: #666;">Score: ${correctInChapter} / ${indices.length}</div>
+        `;
+                paletteGrid.appendChild(headerDiv);
+
+                // Create Buttons
+                indices.forEach(index => {
+                    const btn = document.createElement('button');
+                    btn.textContent = index + 1;
+                    // IMPORTANT: We use a class instead of a unique ID because 
+                    // the same question index might appear in multiple sections
+                    btn.className = `palette-btn q-index-${index}`;
+                    btn.onclick = () => {
+                        quiz.jumpToQuestion(index);
+                        renderQuestion();
+                    };
+                    paletteGrid.appendChild(btn);
+                });
+            });
+
+            // Refresh the colors immediately after building
+            updatePalette();
+        }
+
+        function updatePalette() {
+            quiz.allQuestions.forEach((_, index) => {
+                // Find ALL buttons that represent this question index
+                const buttons = document.querySelectorAll(`.q-index-${index}`);
+
+                buttons.forEach(btn => {
+                    // Reset base classes
+                    btn.classList.remove('current', 'correct', 'incorrect');
+
+                    // 1. Highlight if it's the current question
+                    if (index === quiz.currentQuestionIndex) {
+                        btn.classList.add('current');
+                    }
+
+                    // 2. Color based on history
+                    const result = quiz.history[index];
+                    if (result) {
+                        if (result.isCorrect) {
+                            btn.classList.add('correct');
+                        } else {
+                            btn.classList.add('incorrect');
+                        }
+                    }
+                });
+            });
+        }
+        function renderQuestion() {
+            const q = quiz.getCurrentQuestion();
+            progressText.textContent = `Question ${quiz.currentQuestionIndex + 1} / ${quiz.allQuestions.length}`;
+            scoreDisplay.textContent = `Score: ${quiz.score}`;
+            updatePalette();
+
+            // Chapter Display
+            chapterDisplay.textContent = q.chapter ? "Chapter: " + q.chapter.join(", ") : "";
+
+            // Reset UI
+            feedbackArea.classList.add('hidden');
+            inputContainer.classList.add('hidden');
+            optionsContainer.classList.add('hidden');
+            matchingContainer.classList.add('hidden');
+            submitAnswerBtn.classList.add('hidden');
+
+            // Image logic
+            if (q.image) {
+                questionImage.src = q.image;
+                questionImage.classList.remove('hidden');
+            } else {
+                questionImage.classList.add('hidden');
+            }
+
+            const isAnswered = quiz.isCurrentQuestionAnswered();
+            const savedResult = quiz.getSavedResult();
+
+            questionText.textContent = `${quiz.currentQuestionIndex + 1}. ${q.question}`;
+            backBtn.disabled = (quiz.currentQuestionIndex === 0);
+            nextBtn.textContent = (quiz.currentQuestionIndex === quiz.allQuestions.length - 1) ? "Finish Quiz" : "Next Question ➝";
+
+            // Type handling logic (Short Answer, Matching, Multi-select, etc. remains as you have it)
+            // ... [Your existing render logic for different types] ...
+
+            // NOTE: Ensure the rest of your render logic follows here as in your previous working versions
+            if (q.type === 'short-answer') {
+                inputContainer.classList.remove('hidden');
+                if (isAnswered) {
+                    shortAnswerInput.disabled = true;
+                    shortAnswerInput.value = savedResult.userAnswer;
+                    showFeedback(savedResult);
+                } else {
+                    shortAnswerInput.disabled = false;
+                    shortAnswerInput.value = '';
+                    submitAnswerBtn.classList.remove('hidden');
+                }
+            } else if (q.type === 'matching') {
+                matchingContainer.classList.remove('hidden');
+                matchingContainer.innerHTML = '';
+                if (!isAnswered) submitAnswerBtn.classList.remove('hidden');
+                q.rows.forEach(row => {
+                    const rowDiv = document.createElement('div');
+                    rowDiv.className = 'matching-row';
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'matching-item-text';
+                    textSpan.textContent = row.text;
+                    const select = document.createElement('select');
+                    select.className = 'matching-select';
+                    select.dataset.rowId = row.id;
+                    select.disabled = isAnswered;
+                    const defOpt = document.createElement('option');
+                    defOpt.textContent = "Select..."; defOpt.value = "";
+                    select.appendChild(defOpt);
+                    q.options.forEach(optVal => {
+                        const opt = document.createElement('option');
+                        opt.value = optVal; opt.textContent = optVal;
+                        select.appendChild(opt);
+                    });
+                    if (isAnswered) {
+                        const userVal = savedResult.userAnswer.find(u => u.id === row.id)?.value;
+                        select.value = userVal;
+                        rowDiv.classList.add(userVal === row.correct ? 'correct' : 'incorrect');
+                    }
+                    rowDiv.appendChild(textSpan);
+                    rowDiv.appendChild(select);
+                    matchingContainer.appendChild(rowDiv);
+                });
+                if (isAnswered) showFeedback(savedResult);
+            } else if (q.type === 'multiple-select') {
+                optionsContainer.classList.remove('hidden');
+                optionsContainer.innerHTML = '';
+                if (!isAnswered) submitAnswerBtn.classList.remove('hidden');
+                q.options.forEach(opt => {
+                    const label = document.createElement('label');
+                    label.className = 'checkbox-label';
+                    const input = document.createElement('input');
+                    input.type = "checkbox"; input.value = opt; input.className = 'multi-checkbox';
+                    const span = document.createElement('span');
+                    span.textContent = opt;
+                    if (isAnswered) {
+                        input.disabled = true;
+                        if (savedResult.userAnswer.includes(opt)) input.checked = true;
+                        label.classList.add(q.correctAnswer.includes(opt) ? 'correct-choice' : 'wrong-choice');
+                    }
+                    label.appendChild(input); label.appendChild(span);
+                    optionsContainer.appendChild(label);
+                });
+                if (isAnswered) showFeedback(savedResult);
+            } else {
+                optionsContainer.classList.remove('hidden');
+                optionsContainer.innerHTML = '';
+                q.options.forEach(opt => {
+                    const btn = document.createElement('button');
+                    btn.textContent = opt; btn.className = 'option-btn';
+                    if (isAnswered) {
+                        btn.disabled = true;
+                        if (opt === savedResult.userAnswer) btn.style.border = "2px solid var(--primary-blue)";
+                    } else {
+                        btn.onclick = () => handleAnswer(opt);
+                    }
+                    optionsContainer.appendChild(btn);
+                });
+                if (isAnswered) showFeedback(savedResult);
+            }
+        }
+
+        // --- Keep your navigation and submission handlers from your previous code ---
+        nextBtn.onclick = () => { if (quiz.nextQuestion()) renderQuestion(); else showResults(); };
+        backBtn.onclick = () => { if (quiz.prevQuestion()) renderQuestion(); };
+        submitAnswerBtn.onclick = () => {
+            const q = quiz.getCurrentQuestion();
+            if (q.type === 'short-answer') handleAnswer(shortAnswerInput.value);
+            else if (q.type === 'matching') {
+                const selects = document.querySelectorAll('.matching-select');
+                const userAnswers = Array.from(selects).map(sel => ({ id: parseInt(sel.dataset.rowId), value: sel.value }));
+                if (userAnswers.some(a => a.value === "")) { alert("Please match all items."); return; }
+                handleAnswer(userAnswers);
+            } else if (q.type === 'multiple-select') {
+                const checked = Array.from(optionsContainer.querySelectorAll('.multi-checkbox:checked')).map(cb => cb.value);
+                if (checked.length === 0) { alert("Select at least one."); return; }
+                handleAnswer(checked);
+            }
+        };
+
+        function handleAnswer(ans) {
+            const result = quiz.submitAnswer(ans);
+            console.log("Answer Result:", result.isCorrect, "for Question:", quiz.currentQuestionIndex + 1);
+            createPalette();
+            renderQuestion();
+        }
+
+        function showFeedback(res) {
+            feedbackArea.classList.remove('hidden');
+            feedbackTitle.textContent = res.isCorrect ? "✅ Correct" : "❌ Incorrect";
+            feedbackArea.className = res.isCorrect ? 'correct' : 'incorrect';
+            feedbackText.textContent = res.explanation;
+        }
+
+        function showResults() {
+            document.getElementById('quiz-box-palete-container').classList.add('hidden');
+            resultsScreen.classList.remove('hidden');
+            const stats = quiz.getResults();
+            const chapStats = quiz.getChapterStats();
+            resultsScreen.innerHTML = `
+                <h2>Assessment Completed!</h2>
+                <h1 style="color: #003292; font-size: 3rem;">${stats.score} / ${stats.total} (${stats.percentage}%)</h1>
+                <div id="chapter-breakdown"></div>
+                <button class="primary-btn" onclick="location.reload()">Restart Quiz</button>
+            `;
+            let tableHtml = `<table class="chapter-table"><thead><tr><th>Chapter</th><th>Score</th><th>Status</th></tr></thead><tbody>`;
+            for (const chap in chapStats) {
+                const d = chapStats[chap];
+                const p = ((d.correct / d.total) * 100).toFixed(0);
+                tableHtml += `<tr><td>${chap}</td><td>${d.correct}/${d.total}</td><td><span class="status-pill ${p >= 70 ? 'pass' : 'fail'}">${p}%</span></td></tr>`;
+            }
+            document.getElementById('chapter-breakdown').innerHTML = tableHtml + `</tbody></table>`;
+        }
+    </script>
+</body>
+
+</html>

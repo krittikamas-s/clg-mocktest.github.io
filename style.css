@@ -1,0 +1,344 @@
+:root {
+    --primary-blue: #003292;
+    --accent-orange: #e67e22;
+    --orange-hover: #d35400;
+    --light-bg: #f4f6f9;
+    --text-color: #333;
+    --success: #2ecc71;
+    --error: #e74c3c;
+    --gray-btn: #95a5a6;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--light-bg);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.quiz-container {
+    background: white;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 95vh;
+}
+
+/* Header */
+.header {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 { font-size: 1.2rem; margin: 0; font-weight: 600; }
+.header-info { text-align: right; font-size: 0.9rem; }
+.score-badge { font-weight: bold; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px; margin-top: 5px; display: inline-block;}
+
+/* Quiz Box */
+#quiz-box {
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+h2#question-text {
+    color: var(--primary-blue);
+    margin-top: 0;
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* Options Grid (Single & Multi Select) */
+.options-grid { display: flex; flex-direction: column; gap: 10px; }
+
+.option-btn {
+    background: white;
+    border: 2px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: all 0.2s;
+}
+
+.option-btn:hover { background-color: #f0f4ff; border-color: var(--primary-blue); }
+
+/* Multi-select active state */
+.option-btn.selected {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+/* Matching Styles */
+.matching-grid { display: flex; flex-direction: column; gap: 10px; }
+.matching-row {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #f9f9f9; padding: 12px; border: 1px solid #ddd; border-radius: 6px;
+}
+.matching-item-text { width: 45%; font-weight: 500; }
+.matching-select { width: 50%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+.matching-row.correct { border: 2px solid var(--success); background: #eafaf1; }
+.matching-row.incorrect { border: 2px solid var(--error); background: #fdedec; }
+
+/* Input Styles */
+#input-container { margin-top: 5px; }
+input[type="text"] {
+    width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 1rem; box-sizing: border-box;
+}
+input[type="text"]:focus { outline: none; border-color: var(--primary-blue); }
+
+/* Feedback */
+#feedback-area {
+    margin-top: 20px; padding: 15px; border-radius: 6px;
+    background-color: #f8f9fa; border-left: 5px solid #ccc;
+    animation: fadeIn 0.3s ease;
+}
+#feedback-area.correct { border-left-color: var(--success); background-color: #eafaf1; }
+#feedback-area.incorrect { border-left-color: var(--error); background-color: #fdedec; }
+#feedback-title { margin: 0 0 5px 0; font-size: 1.1rem; }
+
+/* Buttons */
+.nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; }
+button { font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+
+.primary-btn { background-color: var(--accent-orange); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; }
+.primary-btn:hover { background-color: var(--orange-hover); }
+
+.secondary-btn { background-color: var(--gray-btn); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; }
+.secondary-btn:hover { background-color: #7f8c8d; }
+.secondary-btn:disabled { background-color: #e0e0e0; cursor: not-allowed; }
+
+/* Palette (Number Grid) */
+.palette-container { padding: 1rem; background-color: #f8f9fa; border-top: 2px solid #eee; }
+.palette-label { font-size: 0.85rem; color: #666; margin-bottom: 8px; font-weight: bold; }
+.palette-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+
+.palette-btn {
+    width: 35px; height: 35px; border: none; border-radius: 4px;
+    background-color: #e0e0e0; color: #555; font-weight: bold; cursor: pointer;
+}
+.palette-btn:hover { transform: scale(1.1); }
+.palette-btn.answered { background-color: var(--success); color: white; }
+.palette-btn.current { border: 2px solid var(--primary-blue); box-shadow: 0 0 4px var(--primary-blue); transform: scale(1.1); }
+
+/* Utilities */
+.hidden { display: none !important; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- NEW STYLES FOR CHECKBOXES (Multiple Select) --- */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 2px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.checkbox-label:hover {
+    background-color: #f0f4ff;
+    border-color: #bdc3c7;
+}
+
+/* The actual square box */
+.checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+    accent-color: var(--primary-blue); /* Sets the checkmark color to Blue */
+}
+
+/* Style for when the checkbox is checked (Optional: highlights the whole row) */
+.checkbox-label:has(input:checked) {
+    border-color: var(--primary-blue);
+    background-color: #f0f4ff;
+}
+
+/* Feedback Styles for Checkboxes */
+.checkbox-label.correct-choice {
+    border-color: var(--success);
+    background-color: #eafaf1;
+}
+
+.checkbox-label.wrong-choice {
+    border-color: var(--error);
+    background-color: #fdedec;
+}
+
+.checkbox-label.missed-choice {
+    border: 2px dashed var(--primary-blue);
+}
+
+/* 1. Make the main card wider to fit side-by-side layout */
+/* ... keep your existing root and basic styles ... */
+
+/* Ensure the main container can fit the side-by-side view */
+.quiz-container {
+    max-width: 1200px; 
+    width: 98%;
+    margin: 10px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 98vh;
+}
+
+/* FIX: Changed from # to . to match your HTML class, or use ID in HTML */
+#quiz-box-palete-container {
+    display: flex;
+    flex-direction: row; /* Horizontal alignment */
+    align-items: stretch;
+    height: calc(100vh - 160px); /* Adjust for header height */
+    min-height: 500px;
+    border-top: 1px solid #eee;
+    overflow: hidden; /* Prevent double scrollbars on the outer box */
+}
+
+/* Left Side: Question Content */
+#quiz-box {
+    flex: 3; /* Takes 75% of width */
+    padding: 2rem;
+    overflow-y: auto; /* Independent scrolling for questions */
+    border-right: 1px solid #ddd;
+}
+
+/* Right Side: Palette Map */
+.palette-container {
+    flex: 1; /* Takes 25% of width */
+    min-width: 280px; 
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    overflow-y: auto; /* Independent scrolling for the map */
+}
+
+/* Ensure the grid and headers behave in the sidebar */
+.palette-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Adjust based on preference */
+    gap: 8px;
+}
+
+.palette-chapter-header {
+    grid-column: 1 / -1; /* This makes the header take the full width */
+    font-size: 0.85rem;
+    padding: 10px 5px 5px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.palette-chapter-header-container {
+    margin-bottom: 8px;
+}
+
+/* Optional: Make the score look like a badge */
+.chapter-score-badge {
+    background: #e9ecef;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+}
+
+/* ... keep your other button and feedback styles ... */
+
+/* Mobile: Stack them again */
+@media (max-width: 768px) {
+    #quiz-box-palete-container {
+        flex-direction: column;
+        height: auto; /* On mobile, let it grow naturally */
+    }
+    #quiz-box {
+        height: auto;
+        border-right: none;
+    }
+    .palette-container {
+        height: 200px; /* Fixed small height for palette on mobile */
+        border-top: 2px solid #eee;
+    }
+}
+
+#question-image {
+    display: block;
+    max-width: 100%;      /* Ensure it fits in the box */
+    max-height: 300px;    /* Prevent it from being too tall */
+    height: auto;
+    margin: 0 auto 20px auto; /* Center it and add space below */
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.chapter-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.chapter-table th, .chapter-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.chapter-table th {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.status-pill {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.status-pill.pass {
+    background-color: #eafaf1;
+    color: var(--success);
+}
+
+.status-pill.fail {
+    background-color: #fdedec;
+    color: var(--error);
+}
+
+/* Scrollable results if many chapters */
+#results-screen {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.palette-btn.correct {
+    background-color: #28a745 !important; 
+    color: white;
+}
+
+.palette-btn.incorrect {
+    background-color: #dc3545 !important; 
+    color: white;
+}
+
+.palette-btn.current {
+    border: 3px solid #003292;
+    font-weight: bold;
+}
