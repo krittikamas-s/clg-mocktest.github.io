@@ -94,6 +94,15 @@
             </div>
 
             <div class="palette-container" id="palette-drawer">
+                <!-- START Adding Import/Export progress features -->
+                <div class="utility-buttons" style="margin-bottom: 20px; display: flex; gap: 10px;">
+                    <button id="export-btn" class="secondary-btn"
+                        style="flex: 1; padding: 8px; font-size: 0.8rem;">Export Progress</button>
+                    <button id="import-btn-trigger" class="secondary-btn"
+                        style="flex: 1; padding: 8px; font-size: 0.8rem;">Import Progress</button>
+                    <input type="file" id="import-input" class="hidden" accept=".json">
+                </div>
+                <!-- END Adding Import/Export progress features -->
                 <div class="palette-label">Question Map:</div>
                 <div id="palette-grid" class="palette-grid"></div>
             </div>
@@ -115,7 +124,8 @@
     <script src="main.js"></script>
 
     <script>
-        const quiz = new QuizManager();
+        const CURRENT_APP_VERSION = "2.0.0";
+        const quiz = new QuizManager(CURRENT_APP_VERSION);
 
         // DOM Elements
         const chapterDisplay = document.getElementById('chapter-display');
@@ -141,6 +151,71 @@
         const mapToggle = document.getElementById('mobile-map-toggle');
         const paletteDrawer = document.getElementById('palette-drawer');
         const mapArrow = document.getElementById('map-arrow');
+
+        // --- EXPORT / IMPORT HANDLERS ---
+
+        // Export Logic
+        document.getElementById('export-btn').addEventListener('click', () => {
+            const json = quiz.exportProgress();
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `celigo_progress_${new Date().toLocaleDateString()}.json`;
+            document.body.appendChild(a);
+            a.click();
+
+            setTimeout(() => {
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }, 0);
+        });
+
+        // START Adding Import/Export progress features
+        // --- EXPORT / IMPORT HANDLERS ---
+
+        // Export Logic
+        document.getElementById('export-btn').addEventListener('click', () => {
+            const json = quiz.exportProgress();
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `celigo_progress_${new Date().toLocaleDateString()}.json`;
+            document.body.appendChild(a);
+            a.click();
+
+            setTimeout(() => {
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }, 0);
+        });
+
+        // Import Logic
+        const importBtnTrigger = document.getElementById('import-btn-trigger');
+        const importInput = document.getElementById('import-input');
+
+        importBtnTrigger.addEventListener('click', () => importInput.click());
+
+        importInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const success = quiz.importProgress(e.target.result);
+                if (success) {
+                    alert("Progress imported successfully!");
+                    renderQuestion(); // Update current question view
+                    createPalette();  // Update map colors and chapter scores
+                }
+                importInput.value = ''; // Reset input
+            };
+            reader.readAsText(file);
+        });
+        // END Adding Import/Export progress features
 
         if (mapToggle) {
             mapToggle.addEventListener('click', (e) => {
@@ -426,10 +501,4 @@
     </script>
 </body>
 
-
 </html>
-
-
-
-
-

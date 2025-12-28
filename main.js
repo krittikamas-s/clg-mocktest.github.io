@@ -1,21 +1,22 @@
 class QuizManager {
-    constructor() {
+    constructor(appVersion) { // Accept version in constructor
+        this.appVersion = appVersion;
         this.allQuestions = [];
-        if(typeof part1Questions !== 'undefined') this.allQuestions.push(...part1Questions);
-        if(typeof part2Questions !== 'undefined') this.allQuestions.push(...part2Questions);
-        if(typeof part3Questions !== 'undefined') this.allQuestions.push(...part3Questions);
-        if(typeof part4Questions !== 'undefined') this.allQuestions.push(...part4Questions);
-        if(typeof part5Questions !== 'undefined') this.allQuestions.push(...part5Questions);
-        if(typeof part6Questions !== 'undefined') this.allQuestions.push(...part6Questions);
-        if(typeof part7Questions !== 'undefined') this.allQuestions.push(...part7Questions);
-        if(typeof part8Questions !== 'undefined') this.allQuestions.push(...part8Questions);
-        if(typeof part9Questions !== 'undefined') this.allQuestions.push(...part9Questions);
+        if (typeof part1Questions !== 'undefined') this.allQuestions.push(...part1Questions);
+        if (typeof part2Questions !== 'undefined') this.allQuestions.push(...part2Questions);
+        if (typeof part3Questions !== 'undefined') this.allQuestions.push(...part3Questions);
+        if (typeof part4Questions !== 'undefined') this.allQuestions.push(...part4Questions);
+        if (typeof part5Questions !== 'undefined') this.allQuestions.push(...part5Questions);
+        if (typeof part6Questions !== 'undefined') this.allQuestions.push(...part6Questions);
+        if (typeof part7Questions !== 'undefined') this.allQuestions.push(...part7Questions);
+        if (typeof part8Questions !== 'undefined') this.allQuestions.push(...part8Questions);
+        if (typeof part9Questions !== 'undefined') this.allQuestions.push(...part9Questions);
 
         this.prepareQuestions();
 
         this.currentQuestionIndex = 0;
         this.score = 0;
-        this.history = {}; 
+        this.history = {};
     }
 
     // Helper function for Fisher-Yates Shuffle
@@ -46,7 +47,7 @@ class QuizManager {
             }
         });
     }
-    
+
     getCurrentQuestion() {
         return this.allQuestions[this.currentQuestionIndex];
     }
@@ -78,7 +79,7 @@ class QuizManager {
             } else {
                 if (userNorm === String(currentQ.correctAnswer).toLowerCase()) isCorrect = true;
             }
-        } 
+        }
         else if (currentQ.type === 'matching') {
             let allMatchesCorrect = true;
             currentQ.rows.forEach(row => {
@@ -115,14 +116,14 @@ class QuizManager {
     // --- NEW: Calculate stats per chapter ---
     getChapterStats() {
         const stats = {};
-        
+
         this.allQuestions.forEach((q, index) => {
             q.chapter.forEach(chap => {
                 if (!stats[chap]) {
                     stats[chap] = { total: 0, correct: 0 };
                 }
                 stats[chap].total++;
-                
+
                 // If question was answered and was correct
                 if (this.history[index] && this.history[index].isCorrect) {
                     stats[chap].correct++;
@@ -162,5 +163,46 @@ class QuizManager {
             total: this.allQuestions.length,
             percentage: ((this.score / this.allQuestions.length) * 100).toFixed(0)
         };
+    }
+
+    // Add these inside the QuizManager class in main.js
+    exportProgress() {
+        const progressData = {
+            appVersion: this.appVersion, // Add version metadata
+            history: this.history,
+            score: this.score,
+            currentIndex: this.currentQuestionIndex,
+            exportDate: new Date().toISOString(),
+            totalQuestions: this.allQuestions.length
+        };
+        return JSON.stringify(progressData, null, 2);
+    }
+
+    importProgress(jsonString) {
+        try {
+            const data = JSON.parse(jsonString);
+
+            // Version Validation
+            if (data.appVersion !== this.appVersion) {
+                const proceed = confirm(`Version Mismatch!\nFile version: ${data.appVersion || 'Unknown'}\nApp version: ${this.appVersion}\n\nImporting from an older or newer version may cause errors. Do you want to continue?`);
+                if (!proceed) return false;
+            }
+
+            // Quiz Size Validation (as a secondary check)
+            if (data.totalQuestions !== this.allQuestions.length) {
+                if (!confirm("The number of questions in this file doesn't match the current app. Import anyway?")) {
+                    return false;
+                }
+            }
+
+            this.history = data.history || {};
+            this.score = data.score || 0;
+            this.currentQuestionIndex = data.currentIndex || 0;
+            return true;
+        } catch (e) {
+            console.error("Failed to parse import file:", e);
+            alert("Invalid progress file.");
+            return false;
+        }
     }
 }
