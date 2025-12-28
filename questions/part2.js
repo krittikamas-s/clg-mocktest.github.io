@@ -2,7 +2,7 @@ const part2Questions = [
   {
     id: "p2_q1",
     type: "multiple-choice",
-    question: "In this scenario for Hair Concierge, what application is the source? \n\"Hair Concierge, a hair care product business, processes 200-400 daily transactions. They download orders, manually process them, confirm everything is correct, and then upload the orders to their accounting system.\nThe business will start moving to automation by first using the Celigo platform to pull customer and company data from their HubSpot account into Salesforce.\"",
+    question: "In this scenario for Hair Concierge, what application is the source? \"Hair Concierge, a hair care product business, processes 200-400 daily transactions. They download orders, manually process them, confirm everything is correct, and then upload the orders to their accounting system.\nThe business will start moving to automation by first using the Celigo platform to pull customer and company data from their HubSpot account into Salesforce.\"",
     options: ["HubSpot", "Salesforce", "Celigo", "All of These"],
     correctAnswer: "HubSpot",
     explanation: "Hair Concierge is pulling data from their HubSpot account into Salesforce, making HubSpot the source.",
@@ -20,7 +20,7 @@ const part2Questions = [
   {
     id: "p2_q3",
     type: "multiple-choice",
-    question: "Why would using Secret URL cause concerns?",
+    question: "At a business luncheon,  a Hair Concierge manager mentioned plans to start using automation. An associate advised the manager to carefully choose how they make connections. The associate's employer had to redo their connections, after their IT department learned they were originally made using Secret URL. Why would using Secret URL cause concerns?",
     options: ["It's too new and hasn't been adopted by many applications.", "It requires expensive customization.", "It's the least secure verification type.", "It requires the purchase of an additional domain."],
     correctAnswer: "It's the least secure verification type.",
     explanation: "Secret URL is the least secure verification method and should be avoided when possible.",
@@ -167,7 +167,7 @@ const part2Questions = [
   {
     id: "p2_q16",
     type: "multiple-choice",
-    question: "Hair Concierge is importing Shopify orders to Salesforce. One product, VIP Finesse Shampoo, is transitioning to another label. The business wants to leave those product orders out of its Shopify export to Salesforce. What type of filter would be used in this situation?",
+    question: "Hair Concierge set up a flow, which begins with exporting its Shopify orders to Salesforce. One of its hair products, VIP Finesse Shampoo, is transitioning to another label. The business wants to leave those product orders out of its Shopify export to Salesforce. What type of filter would be used in this situation?",
     options: ["Input Filter", "Output Filter"],
     correctAnswer: "Output Filter",
     explanation: "An output filter excludes records after export, preventing VIP Finesse Shampoo orders from being transferred.",

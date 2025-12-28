@@ -45,22 +45,32 @@ const part3Questions = [
   },
   {
     id: "p3_q4",
-    type: "short-answer",
-    question: "What connection configuration is shown in the image? (Image reference: connection settings)",
-    options: [],
+    type: "matching",
+    question: "Using the example on the right, match the fields with the correct values.",
     image: "images/p3_q4.png",
-    correctAnswer: "Authentication type",
-    explanation: "The image shows connection authentication configuration options.",
+    rows: [
+        { id: 1, text: "Override HTTP status code for auth errors", correct: "200" },
+        { id: 2, text: "Path to auth error field in HTTP response body", correct: "error" },
+        { id: 3, text: "Auth error values", correct: "Auth failed" }
+    ],
+    // The options inside the Dropdown
+    options: ["200", "error", "Auth failed"],
+    explanation: "The image shows the HTTP response",
     chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
   },
   {
     id: "p3_q5",
-    type: "short-answer",
-    question: "What HTTP request setting is displayed in the image? (Image reference: HTTP request settings)",
-    options: [],
+    type: "matching",
+    question: "Using the example on the right, match the fields with the correct values.",
     image: "images/p3_q5.png",
-    correctAnswer: "Request body",
-    explanation: "The image shows HTTP request body configuration.",
+    rows: [
+        { id: 1, text: "Override HTTP status code for auth errors", correct: "400" },
+        { id: 2, text: "Path to auth error field in HTTP response body", correct: "errorMessage" },
+        { id: 3, text: "Auth error values", correct: "Request_Failed" }
+    ],
+    // The options inside the Dropdown
+    options: ["400", "errorMessage", "Request_Failed"],
+    explanation: "The image shows the HTTP response",
     chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
   },
   {
@@ -75,32 +85,32 @@ const part3Questions = [
   },
   {
     id: "p3_q7",
-    type: "short-answer",
-    question: "What field or setting is displayed in the image? (Image reference: connection field)",
-    options: [],
+    type: "multiple-choice",
+    question: "What types of settings for an API's rate limiter are shown in the example?",
+    options: ["Standard","Non-standard"],
     image: "images/p3_q7.png",
-    correctAnswer: "Base URI",
-    explanation: "The image shows the Base URI configuration field.",
+    correctAnswer: "Non-standard",
+    explanation: "These are not default HTTP error responses for rate limiter. The default are code '429' and header 'retry-after'.",
     chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
   },
   {
     id: "p3_q8",
-    type: "short-answer",
-    question: "What HTTP method or configuration option is shown in the image? (Image reference: HTTP method)",
-    options: [],
+    type: "multiple-choice",
+    question: "What types of settings for an API's rate limiter are shown in the example?",
+    options: ["Standard","Non-standard"],
     image: "images/p3_q8.png",
-    correctAnswer: "POST",
-    explanation: "The image displays POST method configuration.",
+    correctAnswer: "Non-standard",
+    explanation: "These are not default error responses body for rate limiter. The reponse are code '429' and header 'retry-after'.",
     chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
   },
   {
     id: "p3_q9",
-    type: "short-answer",
-    question: "What is the configuration or setting shown in this image? (Image reference: configuration)",
-    options: [],
+    type: "multiple-choice",
+    question: "What types of settings for an API's rate limiter are shown in the example?",
+    options: ["Standard","Non-standard"],
     image: "images/p3_q9.png",
-    correctAnswer: "Pagination",
-    explanation: "The image shows pagination configuration settings.",
+    correctAnswer: "Standard",
+    explanation: "Code '429' and header 'retry-after' are standard responses.",
     chapter: ["Level 3 - Using Universal Connectors & Databases|HTTP Connectors"]
   },
   {

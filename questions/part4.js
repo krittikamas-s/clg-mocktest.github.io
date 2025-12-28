@@ -68,6 +68,7 @@ const part4Questions = [
     type: "multiple-choice",
     question: "Identify the resource ID in the following URL: https://integrator.io/integrations/652835eb123c6d2a15412cb4/flowBuilder/987835f12345040ecbfd0d76?app=http",
     options: ["integrations", "652835eb123c6d2a15412cb4", "flowBuilder", "987835f12345040ecbfd0d76"],
+    image: "images/p4_q7.png",
     correctAnswer: "987835f12345040ecbfd0d76",
     explanation: "The resource ID is the final identifier in the path before the query string, which represents the specific flow resource.",
     chapter: ["Level 4 - Introducing Developer Tools|Celigo Platform API"]

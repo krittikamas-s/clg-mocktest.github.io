@@ -161,7 +161,7 @@ const part1Questions = [
 	{
 		id: "p1_q15",
 		type: "multiple-choice",
-		question: "Is it valid that an application isn't used because it doesn't appear in the list of connectors?",
+		question: "Louis asked a coworker why the company wasn't using Celigo for integrations with the HR software they use. The coworker said it was because the application didn't appear in the list of connectors on the Celigo platform. Is this a valid reason?",
 		options: [
 			"No. Universal connectors in the Celigo platform can support applications that don't have pre-built connectors listed.",
 			"Yes. But they can contact support to request a pre-built connector for the HR software.",
@@ -189,7 +189,7 @@ const part1Questions = [
 	{
 		id: "p1_q17",
 		type: "multiple-choice",
-		question: "Why might Jaime prefer using an integration app instead of a template?",
+		question: "Jaime, who considers himself a non-technical user, was recently tasked with adding another integration to his company's Celigo account. His supervisor was surprised when Jaime suggested using an integration app, instead of a template for connecting two applications, like they usually do. What could be Jaime's reasoning?",
 		options: [
 			"There's an annual fee for templates.",
 			"An integration app provides a solid starting point, which can be heavily modified with manual customization.",
@@ -217,7 +217,7 @@ const part1Questions = [
 	{
 		id: "p1_q19",
 		type: "multiple-choice",
-		question: "Devin sees the connection media type is JSON but prefers XML. Can he switch the accepted media type to XML?",
+		question: "When consulting a connection guide on the Celigo Help Center, Devin sees the connection media type is JSON but prefers XML. Can he switch the accepted media type to XML?",
 		options: [
 			"No. Celigo doesn't determine the information needed to connect to an application.",
 			"Yes. This can be switched under a connection's Custom settings.",
