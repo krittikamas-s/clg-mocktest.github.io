@@ -358,6 +358,66 @@ const part2Questions = [
     correctAnswer: "Select the non-standard date format the API uses from the \"Override delta date format\" option.",
     explanation: "The Override delta date format option allows Celigo to handle non-standard date formats from source APIs.",
     chapter: ["Level 2 - Exploring Flow Builder|Source"]
+  },
+  {
+    id: "p2_q32",
+    type: "multiple-choice",
+    question: "'Hair Concierge employees want to plan for other types of automation. They need to determine what export type to choose for these other uses. Help them decide.' Choose the export type:",
+    image: "images/p2_q32.png",
+    options: [
+      "All",
+      "Delta",
+      "Once",
+      "Limit"
+    ],
+    correctAnswer: "Limit",
+    explanation: "A Limit export would allow you to specify the export of one record.",
+    chapter: ["Level 2 - Exploring Flow Builder|Source"]
+  },
+  {
+    id: "p2_q33",
+    type: "multiple-choice",
+    question: "'Hair Concierge employees want to plan for other types of automation. They need to determine what export type to choose for these other uses. Help them decide.' Choose the export type:",
+    image: "images/p2_q33.png",
+    options: [
+      "All",
+      "Delta",
+      "Once",
+      "Limit"
+    ],
+    correctAnswer: "All",
+    explanation: "With 'All' export type, all the records will be sent. 'Once' will send all records only one time. But 'All' is the best choice to get all records every time the flow runs by daily schedule.",
+    chapter: ["Level 2 - Exploring Flow Builder|Source"]
+  },
+  {
+    id: "p2_q34",
+    type: "multiple-choice",
+    question: "'Hair Concierge employees want to plan for other types of automation. They need to determine what export type to choose for these other uses. Help them decide.' Choose the export type:",
+    image: "images/p2_q34.png",
+    options: [
+      "All",
+      "Delta",
+      "Once",
+      "Limit"
+    ],
+    correctAnswer: "Once",
+    explanation: "'Once' as the export type would transfer the record for a completed order, mark it as synced, and skip it during later runs. This is the most efficient choice in this scenario.",
+    chapter: ["Level 2 - Exploring Flow Builder|Source"]
+  },
+  {
+    id: "p2_q35",
+    type: "multiple-choice",
+    question: "'Hair Concierge employees want to plan for other types of automation. They need to determine what export type to choose for these other uses. Help them decide.' Choose the export type:",
+    image: "images/p2_q35.png",
+    options: [
+      "All",
+      "Delta",
+      "Once",
+      "Limit"
+    ],
+    correctAnswer: "Delta",
+    explanation: "A 'Delta' export would only transfer new contacts and changes to existing records. Even 'Once' can flagged imported records, 'Delta' is more efficient for large and growing databases.",
+    chapter: ["Level 2 - Exploring Flow Builder|Source"]
   }
 ];
 
