@@ -1,5 +1,5 @@
 # Instructions
-1. Open you [https://krittikamas-s.github.io/clg-mock-test.github.io/](https://krittikamas-s.github.io/clg-mock-test.github.io/) to run the application
+1. Open the [https://krittikamas-s.github.io/clg-mock-test.github.io/](https://krittikamas-s.github.io/clg-mock-test.github.io/) to run the application
 2. Toggle the ```Toggle Question Map``` to display ```Export/Import progress``` options to manage you progress!
 
 
